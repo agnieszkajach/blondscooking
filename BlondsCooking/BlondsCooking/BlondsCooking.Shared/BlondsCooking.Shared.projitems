@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -15,5 +15,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\background.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\muffin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cookie.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cake.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\danie.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\pancake.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\shake.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\mainLogo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\temperature.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\watch.png" />
   </ItemGroup>
 </Project>
