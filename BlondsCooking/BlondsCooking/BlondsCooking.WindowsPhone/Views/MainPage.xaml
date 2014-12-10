@@ -10,7 +10,7 @@
 
     <Pivot>
         <Pivot.Background>
-            <ImageBrush ImageSource="../Assets/background.png"/>
+            <ImageBrush ImageSource="../Assets/mainbackground.png"/>
         </Pivot.Background>
         <PivotItem >
             <PivotItem.Header>

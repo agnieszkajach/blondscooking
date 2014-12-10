@@ -9,7 +9,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../Assets/background.png"></ImageBrush>
+            <ImageBrush ImageSource="../Assets/mainbackground.png"></ImageBrush>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -22,6 +22,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="../Assets/recipebackground.png"></ImageBrush>
+            </Grid.Background>
            <Grid.RowDefinitions>
                <RowDefinition Height="*"/>
                <RowDefinition Height="4*"/>

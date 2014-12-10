@@ -17,7 +17,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Assets\background.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\mainbackground.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\muffin.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cookie.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cake.png" />
@@ -26,6 +26,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\shake.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\mainLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\temperature.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\recipebackground.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\watch.png" />
   </ItemGroup>
 </Project>

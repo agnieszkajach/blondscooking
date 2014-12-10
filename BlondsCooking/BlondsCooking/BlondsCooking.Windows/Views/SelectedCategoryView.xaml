@@ -9,7 +9,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../Assets/background.png"></ImageBrush>
+            <ImageBrush ImageSource="../Assets/mainbackground.png"></ImageBrush>
         </Grid.Background>
     </Grid>
 </Page>
