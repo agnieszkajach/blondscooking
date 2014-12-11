@@ -1,91 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace BlondsCooking.Model
 {
-    public class Recipe
+    public class Recipe : TableEntity
     {
-        private String _category;
-        private String _timeOfCooking;
-        private int _temperatureOfCooking;
-        private String _urlToImage;
-        private String _text;
-        private String _title;
-        private String _ingredients;
+        public string Category { get; set; }
 
-        public String UrlToImage
-        {
-            get { return _urlToImage; }
-            set
-            {
-                _urlToImage = value;
-            }
-        }
+        public string Title { get; set; }
 
-        public String Title
-        {
-            get { return _title; }
-            set
-            {
-                _title = value;
-            }
-        }
+        public string Text { get; set; }
 
-        public String Category
-        {
-            get { return _category; }
-            set
-            {
-                _category = value;
-            }
-        }
+        public string Ingredients { get; set; }
 
-        public String Text
-        {
-            get { return _text; }
-            set
-            {
-                _text = value;
-            }
-        }
+        public string Temperature { get; set; }
 
-        public String TimeOfCooking
-        {
-            get { return _timeOfCooking; }
-            set
-            {
-                _timeOfCooking = value;
-            }
-        }
+        public string Time { get; set; }
 
-        public int TemperatureOfCooking
-        {
-            get { return _temperatureOfCooking; }
-            set
-            {
-                _temperatureOfCooking = value;
-            }
-        }
+        public string UrlToImage { get; set; }
 
-        public String Ingredients
-        {
-            get { return _ingredients; }
-            set
-            {
-                _ingredients = value;
-            }
-        }
-
-        public Recipe(String category, String title, String text, String time, int temperature, String url, String ingredients)
-        {
-            this._category = category;
-            this._title = title;
-            this._text = text;
-            this._timeOfCooking = time;
-            this._temperatureOfCooking = temperature;
-            this._urlToImage = url;
-            this._ingredients = ingredients;
-        }
     }
 }
