@@ -81,6 +81,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SelectedCategoryViewModel.cs" />
+    <Compile Include="ViewModel\SelectedRecipeViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
