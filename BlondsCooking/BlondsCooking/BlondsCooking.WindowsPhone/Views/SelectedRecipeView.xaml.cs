@@ -14,13 +14,14 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
+using BlondsCooking.Common;
 
 namespace BlondsCooking.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SelectedRecipeView : Page
+    public sealed partial class SelectedRecipeView : BasePage
     {
         public SelectedRecipeView()
         {
