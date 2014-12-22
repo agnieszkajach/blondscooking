@@ -16,6 +16,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Common\BasePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\MessageBetweenViewModels.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\NavigationMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureStorageHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureTableHelper.cs" />

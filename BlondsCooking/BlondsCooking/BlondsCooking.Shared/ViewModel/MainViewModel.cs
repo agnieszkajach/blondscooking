@@ -1,4 +1,9 @@
+using System;
+using System.Collections.Generic;
+using BlondsCooking.Common;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BlondsCooking.ViewModel
 {
@@ -21,14 +26,49 @@ namespace BlondsCooking.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            
+        }
+
+        public RelayCommand<String> OpenMuffinWindowCoomand
+        {
+            get { return new RelayCommand<String>(i => OpenWindow("muffin")); }
+        }
+
+        public RelayCommand<String> OpenCookieWindowCoomand
+        {
+            get { return new RelayCommand<String>(i => OpenWindow("cookie")); }
+        }
+
+        public RelayCommand<String> OpenCakeWindowCoomand
+        {
+            get { return new RelayCommand<String>(i => OpenWindow("cake")); }
+        }
+
+        public RelayCommand<String> OpenDinnerWindowCoomand
+        {
+            get { return new RelayCommand<String>(i => OpenWindow("dinner")); }
+        }
+
+        public RelayCommand<String> OpenPancakeWindowCoomand
+        {
+            get { return new RelayCommand<String>(i => OpenWindow("pancake")); }
+        }
+
+        public RelayCommand<String> OpenShakeWindowCoomand
+        {
+            get { return new RelayCommand<String>(i => OpenWindow("shake")); }
+        }
+
+        private void OpenWindow(String nameOfWindowsToNavigateTo)
+        {
+            var paramsDictionary = new Dictionary<string, string>
+            {
+                {"window", "SelectedCategory"},
+                {"category", nameOfWindowsToNavigateTo}
+            };
+            Messenger.Default.Send(new NavigationMessage("SelectedCategory", paramsDictionary));
+            Messenger.Default.Send(new MessageBetweenViewModels() { Message = nameOfWindowsToNavigateTo });
+
         }
     }
 }

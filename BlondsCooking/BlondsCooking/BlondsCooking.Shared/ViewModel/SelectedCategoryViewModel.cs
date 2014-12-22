@@ -4,8 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlondsCooking.Common;
 using BlondsCooking.Model;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BlondsCooking.ViewModel
 {
@@ -34,6 +37,41 @@ namespace BlondsCooking.ViewModel
                 RaisePropertyChanged(() => RecipesInSelectedCategory);
             }
         }
+
+         public SelectedCategoryViewModel()
+         {
+            Messenger.Default.Register<MessageBetweenViewModels>(this, (m) => LoadSelectedCategory(m));     
+         }
+
+         public RelayCommand<String> BackCommand
+         {
+             get { return new RelayCommand<string>(i => Back("Main")); }
+         }
+
+         public RelayCommand<String> OpenRecipeCommand
+         {
+             get { return new RelayCommand<String>(i => OpenRecipe("SelectedRecipe", i)); }
+         }
+
+         private void OpenRecipe(String nameOfWindowToNavigateTo, string recipe)
+         {
+             Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
+             paramsDictionary.Add("window", nameOfWindowToNavigateTo);
+             Messenger.Default.Send(new NavigationMessage("SelectedRecipe", paramsDictionary));
+             Messenger.Default.Send<MessageBetweenViewModels>(new MessageBetweenViewModels() { Message = recipe });
+         }
+         private void Back(String nameOfWindowToNavigateTo)
+         {
+             Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
+             paramsDictionary.Add("window", nameOfWindowToNavigateTo);
+             Messenger.Default.Send(new NavigationMessage("SelectedCategory", paramsDictionary));
+         }
+
+         private void LoadSelectedCategory(MessageBetweenViewModels messageBetweenViewModels)
+         {
+             _selectedCategory = messageBetweenViewModels.Message;
+             //RecipeInSelectedCategory = xmlHelper.GetListOfSelectedCategory(selectedCategory);
+         }
 
     }
 }
