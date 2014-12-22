@@ -31,18 +31,9 @@ namespace BlondsCooking.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
-
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<SelectedCategoryViewModel>();
+            SimpleIoc.Default.Register<SelectedRecipeViewModel>();
         }
 
         public MainViewModel Main
@@ -51,6 +42,16 @@ namespace BlondsCooking.ViewModel
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
+        }
+
+        public SelectedCategoryViewModel SelectedCategory
+        {
+            get { return ServiceLocator.Current.GetInstance<SelectedCategoryViewModel>(); }
+        }
+
+        public SelectedRecipeViewModel SelectedRecipe
+        {
+            get { return ServiceLocator.Current.GetInstance<SelectedRecipeViewModel>(); }
         }
         
         public static void Cleanup()
