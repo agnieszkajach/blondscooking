@@ -13,5 +13,25 @@
         <Grid.Background>
             <ImageBrush ImageSource="../Assets/mainbackground.png"></ImageBrush>
         </Grid.Background>
+
+        <GridView SelectedItem="{Binding SelectedRecipe}" ItemsSource="{Binding RecipesInSelectedCategory}" Margin="60">
+            <GridView.ItemTemplate>
+                <DataTemplate >
+                    <Grid>
+                        <Button Height="230" Width="230" CommandParameter="{Binding Title}" Command="{Binding ElementName=CategoryPage, Path=DataContext.OpenRecipeCommand}">
+                            <Image Source="{Binding UrlToImage}"></Image>
+                        </Button>
+                        <TextBlock Text="{Binding Title}" FontSize="20" Foreground="Black" HorizontalAlignment="Center" FontFamily="MV Boli" TextWrapping="Wrap" Margin="0, 260, 0, 0"/>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+        <Button Margin="9,-11,0,0" Command="{Binding BackCommand}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button" Height="84" Width="91"/>
+        
     </Grid>
 </common:BasePage>
