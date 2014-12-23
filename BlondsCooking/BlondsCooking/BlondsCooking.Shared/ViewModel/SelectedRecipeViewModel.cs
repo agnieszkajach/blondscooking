@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BlondsCooking.Common;
+using BlondsCooking.Helpers;
 using BlondsCooking.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -38,12 +39,12 @@ namespace BlondsCooking.ViewModel
             get { return new RelayCommand<string>(i => Back("SelectedCategory")); }
         }
 
-        private void Back(String NameOfWindowToNavigateTo)
+        private async void Back(String NameOfWindowToNavigateTo)
         {
             Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
             paramsDictionary.Add("window", NameOfWindowToNavigateTo);
             Messenger.Default.Send(new NavigationMessage("SelectedRecipe", paramsDictionary));
-            //Messenger.Default.Send(new MessageBetweenViewModels() {Message = xmlHelper.GetCategoryFromTitle(selectedRecipe)});
+            Messenger.Default.Send(new MessageBetweenViewModels() {Message = await AzureTableHelper.GetCategoryByTitle(selectedRecipe)});
         }
     }
 }
