@@ -48,7 +48,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Source="{Binding SelectedRecipe.UrlToImage}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                <Image Grid.Column="0" Source="{Binding SelectedRecipe.UrlToImage}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin=""/>
                 <Grid Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>

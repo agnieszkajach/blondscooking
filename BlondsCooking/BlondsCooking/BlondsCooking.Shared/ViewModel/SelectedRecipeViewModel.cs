@@ -20,7 +20,7 @@ namespace BlondsCooking.ViewModel
             set
             {
                 _selectedRecipe = value;
-                RaisePropertyChanged(() => _selectedRecipe);
+                RaisePropertyChanged(() => SelectedRecipe);
             }
         }
 
@@ -29,9 +29,11 @@ namespace BlondsCooking.ViewModel
             Messenger.Default.Register<MessageBetweenViewModels>(this, (m) => LoadSelectedRecipe(m));    
         }
 
-        private void LoadSelectedRecipe(MessageBetweenViewModels messageBetweenViewModels)
+        private async void LoadSelectedRecipe(MessageBetweenViewModels messageBetweenViewModels)
         {
             selectedRecipe = messageBetweenViewModels.Message;
+            SelectedRecipe = await AzureTableHelper.GetSelectedRecipe(selectedRecipe);
+            LoadImageForSelectedRecipe();
         }
 
         public RelayCommand<String> BackCommand
@@ -45,6 +47,12 @@ namespace BlondsCooking.ViewModel
             paramsDictionary.Add("window", NameOfWindowToNavigateTo);
             Messenger.Default.Send(new NavigationMessage("SelectedRecipe", paramsDictionary));
             Messenger.Default.Send(new MessageBetweenViewModels() {Message = await AzureTableHelper.GetCategoryByTitle(selectedRecipe)});
+        }
+
+        private void LoadImageForSelectedRecipe()
+        {
+            SelectedRecipe.UrlToImage = "ms-appdata:///local/" + SelectedRecipe.UrlToImage;
+            RaisePropertyChanged(() => SelectedRecipe);
         }
     }
 }
