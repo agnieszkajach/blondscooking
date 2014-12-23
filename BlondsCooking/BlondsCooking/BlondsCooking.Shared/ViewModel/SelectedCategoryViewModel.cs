@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlondsCooking.Common;
+using BlondsCooking.Helpers;
 using BlondsCooking.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -67,11 +68,21 @@ namespace BlondsCooking.ViewModel
              Messenger.Default.Send(new NavigationMessage("SelectedCategory", paramsDictionary));
          }
 
-         private void LoadSelectedCategory(MessageBetweenViewModels messageBetweenViewModels)
+         private async void LoadSelectedCategory(MessageBetweenViewModels messageBetweenViewModels)
          {
              _selectedCategory = messageBetweenViewModels.Message;
-             //RecipeInSelectedCategory = xmlHelper.GetListOfSelectedCategory(selectedCategory);
+             var recipes = await AzureTableHelper.DownloadRecipesFromTableByCategory(_selectedCategory);
+             RecipesInSelectedCategory = new ObservableCollection<Recipe>(recipes);
+             LoadImagesForSelectedCategory();
          }
+
+        private void LoadImagesForSelectedCategory()
+        {
+            foreach (Recipe recipe in _recipesInSelectedCategory)
+            {
+                recipe.UrlToImage = "ms-appdata:///local/" + recipe.UrlToImage;
+            }
+        }
 
     }
 }
