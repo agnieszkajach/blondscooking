@@ -51,7 +51,7 @@ namespace BlondsCooking.ViewModel
 
         private void LoadImageForSelectedRecipe()
         {
-            SelectedRecipe.UrlToImage = "ms-appdata:///local/" + SelectedRecipe.UrlToImage;
+            SelectedRecipe.UrlToImage = App.Path + SelectedRecipe.UrlToImage;
             RaisePropertyChanged(() => SelectedRecipe);
         }
     }

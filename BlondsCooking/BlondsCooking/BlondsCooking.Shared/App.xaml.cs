@@ -18,7 +18,7 @@ namespace BlondsCooking
     /// </summary>
     public sealed partial class App : Application
     {
-        public static string Path = ApplicationData.Current.LocalFolder.Path;
+        public static string Path = ApplicationData.Current.LocalFolder.Path + "\\";
         public static string FileName = "recipes.xml";
         public static bool FirstLaunchOfApplication = true;
 

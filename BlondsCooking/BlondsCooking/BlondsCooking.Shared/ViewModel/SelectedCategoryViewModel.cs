@@ -72,11 +72,6 @@ namespace BlondsCooking.ViewModel
          {
              _selectedCategory = messageBetweenViewModels.Message;
              var recipes = await XmlHelper.GetRecipesByCategory(_selectedCategory);
-             foreach (Recipe recipe in recipes)
-             {
-                 // TODO images loaded from local storage
-                // await AzureStorageHelper.DownloadImageFromAzure(recipe.UrlToImage);
-             }
              RecipesInSelectedCategory = new ObservableCollection<Recipe>(recipes);
              LoadImagesForSelectedCategory();
          }
@@ -85,7 +80,7 @@ namespace BlondsCooking.ViewModel
         {
             foreach (Recipe recipe in RecipesInSelectedCategory)
             {
-                recipe.UrlToImage = "ms-appdata:///local/" + recipe.UrlToImage;
+                recipe.UrlToImage = App.Path + recipe.UrlToImage;
             }
             RaisePropertyChanged(() => RecipesInSelectedCategory);
         }
