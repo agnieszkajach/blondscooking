@@ -5,6 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using BlondsCooking.Helpers;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 using BlondsCooking.Views;
@@ -16,6 +17,9 @@ namespace BlondsCooking
     /// </summary>
     public sealed partial class App : Application
     {
+
+        public static bool FirstLaunchOfApplication = true;
+
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
 #endif
@@ -36,8 +40,18 @@ namespace BlondsCooking
         /// search results, and so forth.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
+
+            if (FirstLaunchOfApplication)
+            {
+                FirstLaunchOfApplication = false;
+                await AzureTableHelper.DownloadAllRecipes();
+            }
+            else
+            {
+                //Check if need to synchronize
+            }
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -124,5 +138,6 @@ namespace BlondsCooking
             // TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
     }
 }

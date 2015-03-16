@@ -67,6 +67,24 @@ namespace BlondsCooking.Helpers
             return seg.FirstOrDefault();
         }
 
+        public static async Task<IList<Recipe>> DownloadAllRecipes()
+        {
+            TableContinuationToken token = null;
+            var items = new List<Recipe>();
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=blondscooking;AccountKey=UW6vJPdpGPKthyE9N1Tn4gocKiJsM4ZnT+rL9wB8tsDmMxoHj3TGy+w4Swb1a2k6e+UIjSQbYCwx8ohbvuxJrg==");
+            CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+            CloudTable table = tableClient.GetTableReference("recipes");
+            TableQuery<Recipe> query = new TableQuery<Recipe>();
+            do
+            {
+                TableQuerySegment<Recipe> seg = await table.ExecuteQuerySegmentedAsync(query, token);
+                token = seg.ContinuationToken;
+                items.AddRange(seg);
+            } while (token != null);
+            await XmlHelper.SaveRecipesToXmlLocally(items);
+            return items;
+        }
+
         
     }
 }

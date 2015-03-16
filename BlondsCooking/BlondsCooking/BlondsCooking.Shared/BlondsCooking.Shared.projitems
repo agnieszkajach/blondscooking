@@ -20,8 +20,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\NavigationMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureStorageHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureTableHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\XmlHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Category.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Recipe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Synchronization\LocalSaver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\SelectedCategoryViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\SelectedRecipeViewModel.cs" />
