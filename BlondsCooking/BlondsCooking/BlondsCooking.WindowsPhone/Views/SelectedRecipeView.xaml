@@ -11,21 +11,21 @@
 
     <Pivot>
         <Pivot.Background>
-            <ImageBrush ImageSource="../Assets/mainbackground.png"></ImageBrush>
+            <ImageBrush ImageSource="../Assets/mainbackground.jpg"></ImageBrush>
         </Pivot.Background>
         <PivotItem>
             <PivotItem.Header>
-                <TextBlock Foreground="Black">Name</TextBlock>
+                <TextBlock Foreground="White">Name</TextBlock>
             </PivotItem.Header>
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>
-                <TextBlock Foreground="Black">Ingredients</TextBlock>
+                <TextBlock Foreground="White">Ingredients</TextBlock>
             </PivotItem.Header>
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>
-                <TextBlock Foreground="Black">Recipe</TextBlock>
+                <TextBlock Foreground="White">Recipe</TextBlock>
             </PivotItem.Header>
         </PivotItem>
     </Pivot>

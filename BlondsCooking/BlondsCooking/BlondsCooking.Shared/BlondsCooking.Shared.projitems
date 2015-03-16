@@ -28,16 +28,19 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Assets\mainbackground.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\muffin.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cookie.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cake.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\danie.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cakes.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cookies.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cupcake.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\maindishes.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\muffins.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\pancake.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\shake.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\soups.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Layout\back.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\mainbackground.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\mainLogo.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\temperature.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\recipebackground.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\watch.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\photos.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\properties.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\time-bialy.png" />
   </ItemGroup>
 </Project>

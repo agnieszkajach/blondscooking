@@ -12,7 +12,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../Assets/mainbackground.png"></ImageBrush>
+            <ImageBrush ImageSource="../Assets/mainbackground.jpg"></ImageBrush>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*" />
@@ -30,13 +30,13 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Button Command="{Binding OpenMuffinWindowCoomand}" Grid.Row="0">
-                <Image Source="../Assets/Categories/muffin.png"></Image>
+            <Button Command="{Binding OpenMuffinWindowCoomand}" Grid.Row="0" BorderThickness="0">
+                <Image Source="../Assets/Categories/muffins.png"></Image>
             </Button>
-            <Button Command="{Binding OpenCakeWindowCoomand}" Grid.Row="1">
-                <Image Source="../Assets/Categories/cake.png"></Image>
+            <Button Command="{Binding OpenCakeWindowCoomand}" Grid.Row="1" BorderThickness="0">
+                <Image Source="../Assets/Categories/cakes.png"></Image>
             </Button>
-            <Button Command="{Binding OpenPancakeWindowCoomand}" Grid.Row="2">
+            <Button Command="{Binding OpenPancakeWindowCoomand}" Grid.Row="2" BorderThickness="0">
                 <Image Source="../Assets/Categories/pancake.png"></Image>
             </Button>
         </Grid>
@@ -46,18 +46,16 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Button Command="{Binding OpenCookieWindowCoomand}" Grid.Row="0">
-                <Image Source="../Assets/Categories/cookie.png"></Image>
+            <Button Command="{Binding OpenCookieWindowCoomand}" Grid.Row="0" BorderThickness="0">
+                <Image Source="../Assets/Categories/cookies.png"></Image>
             </Button>
-            <Button Command="{Binding OpenDinnerWindowCoomand}" Grid.Row="1">
-                <Image Source="../Assets/Categories/danie.png"></Image>
+            <Button Command="{Binding OpenDinnerWindowCoomand}" Grid.Row="1" BorderThickness="0">
+                <Image Source="../Assets/Categories/maindishes.png"></Image>
             </Button>
-            <Button Command="{Binding OpenShakeWindowCoomand}" Grid.Row="2">
+            <Button Command="{Binding OpenShakeWindowCoomand}" Grid.Row="2" BorderThickness="0">
                 <Image Source="../Assets/Categories/shake.png"></Image>
             </Button>
         </Grid>
         <Image Grid.Column="0" Grid.Row="1" Source="../Assets/mainLogo.png"></Image>
-        <TextBlock Grid.ColumnSpan="3" Grid.Row="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Designer: Wiktoria Kozłowicz     Developer: Agnieszka Jach" VerticalAlignment="Center" Foreground="Black" FontSize="32" FontFamily="MV Boli"/>
-        <TextBlock Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="The secret of my cooking is the fact that I always put my heart in it." VerticalAlignment="Bottom" Foreground="#FF020202" FontSize="40" FontStyle="Italic" FontFamily="Gabriola"/>
-    </Grid>
+        </Grid>
 </common:BasePage>

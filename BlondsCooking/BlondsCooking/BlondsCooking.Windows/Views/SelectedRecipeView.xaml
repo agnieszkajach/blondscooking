@@ -11,15 +11,15 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../Assets/mainbackground.png"></ImageBrush>
+            <ImageBrush ImageSource="../Assets/mainbackground.jpg"></ImageBrush>
         </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -61,11 +61,9 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Button Grid.Column="0" Grid.Row="0"  Command="{Binding BackCommand}"
-                       Style="{StaticResource NavigationBackButtonNormalStyle}"
-                       VerticalAlignment="Top"
-                       AutomationProperties.Name="Back"
-                       AutomationProperties.AutomationId="BackButton"
-                       AutomationProperties.ItemType="Navigation Button" Height="84" Width="91"/>
+        <Button Margin="9,-11,0,0" Command="{Binding BackCommand}" BorderThickness="0"
+                        VerticalAlignment="Top" Height="150" Width="200">
+            <Image Source="../Assets/Layout/back.png" />
+        </Button>
     </Grid>
 </common:BasePage>

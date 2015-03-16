@@ -11,7 +11,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../Assets/mainbackground.png"></ImageBrush>
+            <ImageBrush ImageSource="../Assets/mainbackground.jpg"></ImageBrush>
         </Grid.Background>
     </Grid>
 </common:BasePage>

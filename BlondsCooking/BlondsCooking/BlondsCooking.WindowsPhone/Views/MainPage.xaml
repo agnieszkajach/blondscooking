@@ -11,11 +11,11 @@
 
     <Pivot>
         <Pivot.Background>
-            <ImageBrush ImageSource="../Assets/mainbackground.png"/>
+            <ImageBrush ImageSource="../Assets/mainbackground.jpg"/>
         </Pivot.Background>
         <PivotItem >
             <PivotItem.Header>
-                <TextBlock Foreground="Black">Categories</TextBlock>
+                <TextBlock Foreground="White">Categories</TextBlock>
             </PivotItem.Header>  
             <Grid>
                 <Grid.RowDefinitions>
@@ -27,29 +27,29 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Command="{Binding OpenMuffinWindowCoomand}" Grid.Row="0" Grid.Column="0">
-                    <Image Source="../Assets/Categories/muffin.png"></Image>
+                <Button Command="{Binding OpenMuffinWindowCoomand}" Grid.Row="0" Grid.Column="0" BorderThickness="0">
+                    <Image Source="../Assets/Categories/muffins.png"></Image>
                 </Button>
-                <Button Command="{Binding OpenCakeWindowCoomand}" Grid.Row="1" Grid.Column="0">
-                    <Image Source="../Assets/Categories/cake.png"></Image>
+                <Button Command="{Binding OpenCakeWindowCoomand}" Grid.Row="1" Grid.Column="0" BorderThickness="0">
+                    <Image Source="../Assets/Categories/cakes.png"></Image>
                 </Button>
-                <Button Command="{Binding OpenPancakeWindowCoomand}" Grid.Row="2" Grid.Column="0">
+                <Button Command="{Binding OpenPancakeWindowCoomand}" Grid.Row="2" Grid.Column="0" BorderThickness="0">
                     <Image Source="../Assets/Categories/pancake.png"></Image>
                 </Button>
-                <Button Command="{Binding OpenCookieWindowCoomand}" Grid.Row="0" Grid.Column="1">
-                    <Image Source="../Assets/Categories/cookie.png"></Image>
+                <Button Command="{Binding OpenCookieWindowCoomand}" Grid.Row="0" Grid.Column="1" BorderThickness="0">
+                    <Image Source="../Assets/Categories/cookies.png"></Image>
                 </Button>
-                <Button Command="{Binding OpenDinnerWindowCoomand}" Grid.Row="1" Grid.Column="1">
-                    <Image Source="../Assets/Categories/danie.png"></Image>
+                <Button Command="{Binding OpenDinnerWindowCoomand}" Grid.Row="1" Grid.Column="1" BorderThickness="0">
+                    <Image Source="../Assets/Categories/maindishes.png"></Image>
                 </Button>
-                <Button Command="{Binding OpenShakeWindowCoomand}" Grid.Row="2" Grid.Column="1">
+                <Button Command="{Binding OpenShakeWindowCoomand}" Grid.Row="2" Grid.Column="1" BorderThickness="0">
                     <Image Source="../Assets/Categories/shake.png"></Image>
                 </Button>
             </Grid>
        </PivotItem>
         <PivotItem>
             <PivotItem.Header>
-                <TextBlock Foreground="Black">About</TextBlock>
+                <TextBlock Foreground="White">About</TextBlock>
             </PivotItem.Header>
         </PivotItem>
     </Pivot>
