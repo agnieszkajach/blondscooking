@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using Windows.Storage;
 using BlondsCooking.Model;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace BlondsCooking.Helpers
 {
@@ -12,17 +14,29 @@ namespace BlondsCooking.Helpers
     {
         public static async Task SaveRecipesToXmlLocally(IList<Recipe> recipesList)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Recipe));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Recipe>));
             StorageFolder folder = ApplicationData.Current.LocalFolder;
-            StorageFile file = await folder.CreateFileAsync("recipes.xml", CreationCollisionOption.ReplaceExisting);
+            StorageFile file = await folder.CreateFileAsync(App.FileName, CreationCollisionOption.ReplaceExisting);
             Stream stream = await file.OpenStreamForWriteAsync();
             using (stream)
             {
-                foreach(Recipe recipe in recipesList)               
-                {
-                    serializer.Serialize(stream, recipe);
-                }
+                serializer.Serialize(stream, recipesList);
             }
+        }
+
+        public static async Task<IList<Recipe>> GetRecipesByCategory(string category )
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Recipe>));
+            List<Recipe> listFromXml;
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFile file = await folder.GetFileAsync(App.FileName);
+            Stream stream = await file.OpenStreamForReadAsync();
+            using (stream)
+            {
+                listFromXml = (List<Recipe>)serializer.Deserialize(stream);
+            }
+            List<Recipe> recipes = listFromXml.Where(r => r.Category == category).ToList();
+            return recipes;
         }
     }
 }

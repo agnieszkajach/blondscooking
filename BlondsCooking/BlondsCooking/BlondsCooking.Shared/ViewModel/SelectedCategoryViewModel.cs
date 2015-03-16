@@ -71,10 +71,11 @@ namespace BlondsCooking.ViewModel
          private async void LoadSelectedCategory(MessageBetweenViewModels messageBetweenViewModels)
          {
              _selectedCategory = messageBetweenViewModels.Message;
-             var recipes = await AzureTableHelper.DownloadRecipesFromTableByCategory(_selectedCategory);
+             var recipes = await XmlHelper.GetRecipesByCategory(_selectedCategory);
              foreach (Recipe recipe in recipes)
              {
-                 await AzureStorageHelper.DownloadImageFromAzure(recipe.UrlToImage);
+                 // TODO images loaded from local storage
+                // await AzureStorageHelper.DownloadImageFromAzure(recipe.UrlToImage);
              }
              RecipesInSelectedCategory = new ObservableCollection<Recipe>(recipes);
              LoadImagesForSelectedCategory();

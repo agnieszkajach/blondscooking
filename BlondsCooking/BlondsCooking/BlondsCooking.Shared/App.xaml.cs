@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -17,7 +18,8 @@ namespace BlondsCooking
     /// </summary>
     public sealed partial class App : Application
     {
-
+        public static string Path = ApplicationData.Current.LocalFolder.Path;
+        public static string FileName = "recipes.xml";
         public static bool FirstLaunchOfApplication = true;
 
 #if WINDOWS_PHONE_APP
