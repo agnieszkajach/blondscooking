@@ -47,6 +47,7 @@ namespace BlondsCooking
             {
                 FirstLaunchOfApplication = false;
                 await AzureTableHelper.DownloadAllRecipes();
+                await AzureStorageHelper.DownloadAllImagesFromAzure();
             }
             else
             {

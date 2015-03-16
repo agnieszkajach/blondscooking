@@ -67,7 +67,7 @@ namespace BlondsCooking.Helpers
             return seg.FirstOrDefault();
         }
 
-        public static async Task<IList<Recipe>> DownloadAllRecipes()
+        public static async Task DownloadAllRecipes()
         {
             TableContinuationToken token = null;
             var items = new List<Recipe>();
@@ -82,7 +82,6 @@ namespace BlondsCooking.Helpers
                 items.AddRange(seg);
             } while (token != null);
             await XmlHelper.SaveRecipesToXmlLocally(items);
-            return items;
         }
 
         
