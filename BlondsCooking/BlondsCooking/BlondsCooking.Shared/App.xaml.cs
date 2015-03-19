@@ -48,8 +48,8 @@ namespace BlondsCooking
             if (FirstLaunchOfApplication)
             {
                 FirstLaunchOfApplication = false;
-                await AzureTableHelper.DownloadAllRecipes();
-                await AzureStorageHelper.DownloadAllImagesFromAzure();
+                //await AzureTableHelper.DownloadAllRecipes();
+                //await AzureStorageHelper.DownloadAllImagesFromAzure();
             }
             else
             {

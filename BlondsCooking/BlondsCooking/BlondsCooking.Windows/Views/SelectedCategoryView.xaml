@@ -15,7 +15,7 @@
             <ImageBrush ImageSource="../Assets/mainbackground.jpg"></ImageBrush>
         </Grid.Background>
 
-        <GridView SelectedItem="{Binding SelectedRecipe}" ItemsSource="{Binding RecipesInSelectedCategory}" Margin="60">
+        <GridView SelectedItem="{Binding SelectedRecipe}" ItemsSource="{Binding RecipesInSelectedCategory}" Margin="60,130,60,20">
             <GridView.ItemTemplate>
                 <DataTemplate >
                     <Grid>
