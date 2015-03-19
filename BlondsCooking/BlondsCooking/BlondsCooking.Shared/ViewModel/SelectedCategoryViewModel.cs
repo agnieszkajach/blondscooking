@@ -41,7 +41,7 @@ namespace BlondsCooking.ViewModel
 
          public SelectedCategoryViewModel()
          {
-            Messenger.Default.Register<MessageBetweenViewModels>(this, LoadSelectedCategory);     
+            Messenger.Default.Register<MessageToGetBackToCategory>(this, LoadSelectedCategory);     
          }
 
          public RelayCommand<String> BackCommand
@@ -59,7 +59,7 @@ namespace BlondsCooking.ViewModel
              Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
              paramsDictionary.Add("window", nameOfWindowToNavigateTo);
              Messenger.Default.Send(new NavigationMessage("SelectedRecipe", paramsDictionary));
-             Messenger.Default.Send<MessageBetweenViewModels>(new MessageBetweenViewModels() { Message = recipe });
+             Messenger.Default.Send(new MessageToLoadRecipe() { Message = recipe });
          }
          private void Back(String nameOfWindowToNavigateTo)
          {
@@ -68,9 +68,9 @@ namespace BlondsCooking.ViewModel
              Messenger.Default.Send(new NavigationMessage("SelectedCategory", paramsDictionary));
          }
 
-         private async void LoadSelectedCategory(MessageBetweenViewModels messageBetweenViewModels)
+         private async void LoadSelectedCategory(MessageToGetBackToCategory messageToGetBackToCategory)
          {
-             _selectedCategory = messageBetweenViewModels.Message;
+             _selectedCategory = messageToGetBackToCategory.Message;
              var recipes = await XmlHelper.GetRecipesByCategory(_selectedCategory);
              LoadImagesForSelectedCategory(recipes);
          }

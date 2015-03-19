@@ -67,7 +67,7 @@ namespace BlondsCooking.ViewModel
                 {"category", nameOfWindowsToNavigateTo}
             };
             Messenger.Default.Send(new NavigationMessage("SelectedCategory", paramsDictionary));
-            Messenger.Default.Send(new MessageBetweenViewModels() { Message = nameOfWindowsToNavigateTo });
+            Messenger.Default.Send(new MessageToGetBackToCategory() { Message = nameOfWindowsToNavigateTo });
 
         }
     }

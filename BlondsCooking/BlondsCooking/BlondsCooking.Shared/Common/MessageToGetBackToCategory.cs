@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BlondsCooking.Common
 {
-    public class MessageBetweenViewModels
+    public class MessageToGetBackToCategory
     {
         public String Message { get; set; }
     }

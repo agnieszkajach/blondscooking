@@ -27,14 +27,13 @@ namespace BlondsCooking.ViewModel
 
         public SelectedRecipeViewModel()
         {
-            Messenger.Default.Register<MessageBetweenViewModels>(this, LoadSelectedRecipe);    
+            Messenger.Default.Register<MessageToLoadRecipe>(this, LoadSelectedRecipe);    
         }
 
-        private async void LoadSelectedRecipe(MessageBetweenViewModels messageBetweenViewModels)
+        private async void LoadSelectedRecipe(MessageToLoadRecipe messageBetweenViewModels)
         {
             selectedRecipe = messageBetweenViewModels.Message;
             SelectedRecipe = await XmlHelper.GetRecipeByTitle(selectedRecipe);
-            await Task.WhenAll();
             LoadImageForSelectedRecipe();
         }
 
@@ -48,7 +47,7 @@ namespace BlondsCooking.ViewModel
             Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
             paramsDictionary.Add("window", NameOfWindowToNavigateTo);
             Messenger.Default.Send(new NavigationMessage("SelectedRecipe", paramsDictionary));
-            Messenger.Default.Send(new MessageBetweenViewModels() {Message = await XmlHelper.GetCategoryByTitle(selectedRecipe)});
+            Messenger.Default.Send(new MessageToGetBackToCategory() {Message = await XmlHelper.GetCategoryByTitle(selectedRecipe)});
         }
 
         private void LoadImageForSelectedRecipe()
