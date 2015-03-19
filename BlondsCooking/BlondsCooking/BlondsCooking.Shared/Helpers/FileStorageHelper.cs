@@ -14,7 +14,7 @@ namespace BlondsCooking.Helpers
             foreach (CloudBlockBlob item in blobs)
             {
                 StorageFile file = await ApplicationData.Current.LocalFolder.CreateFileAsync(item.Name, CreationCollisionOption.ReplaceExisting);
-                item.DownloadToFileAsync(file);
+                await item.DownloadToFileAsync(file);
             }
         }
 

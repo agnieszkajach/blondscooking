@@ -41,7 +41,7 @@ namespace BlondsCooking.ViewModel
 
          public SelectedCategoryViewModel()
          {
-            Messenger.Default.Register<MessageBetweenViewModels>(this, (m) => LoadSelectedCategory(m));     
+            Messenger.Default.Register<MessageBetweenViewModels>(this, LoadSelectedCategory);     
          }
 
          public RelayCommand<String> BackCommand
@@ -72,17 +72,16 @@ namespace BlondsCooking.ViewModel
          {
              _selectedCategory = messageBetweenViewModels.Message;
              var recipes = await XmlHelper.GetRecipesByCategory(_selectedCategory);
-             RecipesInSelectedCategory = new ObservableCollection<Recipe>(recipes);
-             LoadImagesForSelectedCategory();
+             LoadImagesForSelectedCategory(recipes);
          }
 
-        private void LoadImagesForSelectedCategory()
+        private void LoadImagesForSelectedCategory(IList<Recipe> recipes)
         {
-            foreach (Recipe recipe in RecipesInSelectedCategory)
+            foreach (Recipe recipe in recipes)
             {
                 recipe.UrlToImage = App.Path + recipe.UrlToImage;
             }
-            RaisePropertyChanged(() => RecipesInSelectedCategory);
+            RecipesInSelectedCategory = new ObservableCollection<Recipe>(recipes);
         }
 
     }

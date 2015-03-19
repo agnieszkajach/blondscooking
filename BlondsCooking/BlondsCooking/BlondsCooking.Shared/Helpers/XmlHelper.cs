@@ -38,5 +38,37 @@ namespace BlondsCooking.Helpers
             List<Recipe> recipes = listFromXml.Where(r => r.Category == category).ToList();
             return recipes;
         }
+
+        public static async Task<Recipe> GetRecipeByTitle(string title)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Recipe>));
+            List<Recipe> listFromXml;
+            Recipe recipe;
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFile file = await folder.GetFileAsync(App.FileName);
+            Stream stream = await file.OpenStreamForReadAsync();
+            using (stream)
+            {
+                listFromXml = (List<Recipe>)serializer.Deserialize(stream);
+            }
+            recipe = listFromXml.FirstOrDefault(r => r.Title == title);
+            return recipe;
+        }
+
+        public static async Task<string> GetCategoryByTitle(string title)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Recipe>));
+            List<Recipe> listFromXml;
+            string category;
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFile file = await folder.GetFileAsync(App.FileName);
+            Stream stream = await file.OpenStreamForReadAsync();
+            using (stream)
+            {
+                listFromXml = (List<Recipe>)serializer.Deserialize(stream);
+            }
+            category = listFromXml.FirstOrDefault(r => r.Title == title).Category;
+            return category;
+        }
     }
 }
