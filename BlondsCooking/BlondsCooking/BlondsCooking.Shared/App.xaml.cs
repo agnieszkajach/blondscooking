@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Background;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -21,7 +22,7 @@ namespace BlondsCooking
     {
         public static string Path = ApplicationData.Current.LocalFolder.Path + "\\";
         public static string FileName = "recipes.xml";
-        public static bool FirstLaunchOfApplication = true;
+        public static bool FirstLaunchOfApplication = false;
 
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
@@ -53,6 +54,14 @@ namespace BlondsCooking
             else
             {
                 await LocalContentHelper.CheckForLocalFile();
+                BackgroundExecutionManager.RequestAccessAsync();
+                BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
+                {
+                    TaskEntryPoint = "BlondsCooking.Synchronization.BackgroundTask"
+                };
+                backgroundTaskBuilder.SetTrigger(new TimeTrigger(15, false));
+                backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
+                IBackgroundTaskRegistration task = backgroundTaskBuilder.Register();
             }
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
