@@ -7,6 +7,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using BlondsCooking.Helpers;
+using BlondsCooking.Synchronization;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 using BlondsCooking.Views;
@@ -48,12 +49,10 @@ namespace BlondsCooking
             if (FirstLaunchOfApplication)
             {
                 FirstLaunchOfApplication = false;
-                //await AzureTableHelper.DownloadAllRecipes();
-                //await AzureStorageHelper.DownloadAllImagesFromAzure();
             }
             else
             {
-                //Check if need to synchronize
+                await LocalContentHelper.CheckForLocalFile();
             }
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
