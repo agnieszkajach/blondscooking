@@ -14,7 +14,7 @@
             <ImageBrush ImageSource="../Assets/mainbackground.jpg"></ImageBrush>
         </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -24,12 +24,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Grid.Column="1">
-            <Grid.Background>
-                <ImageBrush ImageSource="../Assets/recipebackground.png"></ImageBrush>
-            </Grid.Background>
            <Grid.RowDefinitions>
                <RowDefinition Height="*"/>
-               <RowDefinition Height="4*"/>
+               <RowDefinition Height="5*"/>
            </Grid.RowDefinitions>
             <Grid Row="0">
                 <Grid.ColumnDefinitions>
@@ -39,8 +36,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="1" Source="../Assets/temperature.png"></Image>
-                <Image Grid.Column="3" Source="../Assets/watch.png"></Image>
+                <!--<Image Grid.Column="1" Source="../Assets/Recipe/"></Image>-->
+                <Image Grid.Column="3" Source="../Assets/Recipe/time.png" HorizontalAlignment="Left"></Image>
                 <TextBlock Grid.Column="0" Text="{Binding SelectedRecipe.Title}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock Grid.Column="2" Text="{Binding SelectedRecipe.Temperature}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock Grid.Column="4" Text="{Binding SelectedRecipe.Time}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
