@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using BlondsCooking.Helpers;
 
 namespace BlondsCooking.Synchronization
 {
@@ -9,7 +10,21 @@ namespace BlondsCooking.Synchronization
     {
         public async Task CheckForUpdateOnAzure()
         {
-            //TODO check for updates on azure and download them if there are some
+            bool updateNeeded = false;
+            var localRecipes = await XmlHelper.GetTitlesOfRecipes();
+            var azureRecipes = await AzureTableHelper.DownloadAllTitlesOfRecipes();
+            foreach (string title in azureRecipes)
+            {
+                if (!localRecipes.Contains(title))
+                {
+                    updateNeeded = true;
+                }
+            }
+            if (updateNeeded)
+            {
+                await AzureTableHelper.DownloadAllRecipes();
+                await AzureStorageHelper.DownloadAllImagesFromAzure();
+            }
         }
 
     }

@@ -43,7 +43,6 @@ namespace BlondsCooking.Helpers
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Recipe>));
             List<Recipe> listFromXml;
-            Recipe recipe;
             StorageFolder folder = ApplicationData.Current.LocalFolder;
             StorageFile file = await folder.GetFileAsync(App.FileName);
             Stream stream = await file.OpenStreamForReadAsync();
@@ -51,7 +50,7 @@ namespace BlondsCooking.Helpers
             {
                 listFromXml = (List<Recipe>)serializer.Deserialize(stream);
             }
-            recipe = listFromXml.FirstOrDefault(r => r.Title == title);
+            var recipe = listFromXml.FirstOrDefault(r => r.Title == title);
             return recipe;
         }
 
@@ -59,7 +58,6 @@ namespace BlondsCooking.Helpers
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Recipe>));
             List<Recipe> listFromXml;
-            string category;
             StorageFolder folder = ApplicationData.Current.LocalFolder;
             StorageFile file = await folder.GetFileAsync(App.FileName);
             Stream stream = await file.OpenStreamForReadAsync();
@@ -67,8 +65,23 @@ namespace BlondsCooking.Helpers
             {
                 listFromXml = (List<Recipe>)serializer.Deserialize(stream);
             }
-            category = listFromXml.FirstOrDefault(r => r.Title == title).Category;
+            var category = listFromXml.FirstOrDefault(r => r.Title == title).Category;
             return category;
+        }
+
+        public static async Task<IList<String>> GetTitlesOfRecipes()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Recipe>));
+            List<Recipe> listFromXml;
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFile file = await folder.GetFileAsync(App.FileName);
+            Stream stream = await file.OpenStreamForReadAsync();
+            using (stream)
+            {
+                listFromXml = (List<Recipe>)serializer.Deserialize(stream);
+            }
+            var titlesList = listFromXml.Select(r => r.Title).ToList();
+            return titlesList;
         }
     }
 }
