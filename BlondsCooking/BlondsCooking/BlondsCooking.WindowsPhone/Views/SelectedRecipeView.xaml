@@ -17,16 +17,40 @@
             <PivotItem.Header>
                 <TextBlock Foreground="White">Name</TextBlock>
             </PivotItem.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="../Assets/Recipe/photos.png" HorizontalAlignment="Left" />
+                <Image Grid.Row="1" Source="{Binding SelectedRecipe.UrlToImage}" />
+            </Grid>
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>
                 <TextBlock Foreground="White">Ingredients</TextBlock>
             </PivotItem.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="../Assets/Recipe/shopping.png" HorizontalAlignment="Left" />
+                <TextBlock Margin="0, 15, 0, 0" Grid.Row="1" TextWrapping="WrapWholeWords" FontSize="25" Text="{Binding SelectedRecipe.Ingredients}" />
+            </Grid>
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>
                 <TextBlock Foreground="White">Recipe</TextBlock>
             </PivotItem.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+                <Image Source="../Assets/Recipe/properties.png" HorizontalAlignment="Left"/>
+                <TextBlock Margin="0, 15, 0, 0" Grid.Row="1" TextWrapping="WrapWholeWords" FontSize="25"  Text="{Binding SelectedRecipe.Text}"/>
+            </Grid>
         </PivotItem>
     </Pivot>
 </common:BasePage>

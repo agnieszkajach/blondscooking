@@ -49,6 +49,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\mainLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\photos.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\properties.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\shopping.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\time.png" />
   </ItemGroup>
 </Project>
