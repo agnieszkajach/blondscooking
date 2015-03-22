@@ -22,7 +22,7 @@
                         <Button Height="230" Width="230" CommandParameter="{Binding Title}" Command="{Binding ElementName=CategoryPage, Path=DataContext.OpenRecipeCommand}">
                             <Image Source="{Binding UrlToImage}"/>
                         </Button>
-                        <TextBlock Text="{Binding Title}" FontSize="20" Foreground="Black" HorizontalAlignment="Center" FontFamily="MV Boli" TextWrapping="Wrap" Margin="0, 260, 0, 0"/>
+                        <TextBlock Text="{Binding Title}" FontSize="20" Foreground="White" HorizontalAlignment="Center" FontFamily="MV Boli" TextWrapping="Wrap" Margin="0, 260, 0, 0"/>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>

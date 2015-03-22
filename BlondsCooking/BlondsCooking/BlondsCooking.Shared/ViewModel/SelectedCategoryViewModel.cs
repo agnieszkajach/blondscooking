@@ -25,7 +25,18 @@ namespace BlondsCooking.ViewModel
             set
             {
                 _selectedRecipe = value;
-                RaisePropertyChanged(() => _selectedRecipe);
+                RaisePropertyChanged(() => SelectedRecipe);
+            }
+        }
+
+        public string SelectedCategory
+        {
+            get
+            {   return _selectedCategory;   }
+            set
+            {
+                _selectedCategory = value;
+                RaisePropertyChanged(() => SelectedCategory);
             }
         }
 
@@ -70,8 +81,8 @@ namespace BlondsCooking.ViewModel
 
          private async void LoadSelectedCategory(MessageToGetBackToCategory messageToGetBackToCategory)
          {
-             _selectedCategory = messageToGetBackToCategory.Message;
-             var recipes = await XmlHelper.GetRecipesByCategory(_selectedCategory);
+             SelectedCategory = messageToGetBackToCategory.Message;
+             var recipes = await XmlHelper.GetRecipesByCategory(SelectedCategory);
              LoadImagesForSelectedCategory(recipes);
          }
 
