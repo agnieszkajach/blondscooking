@@ -76,14 +76,14 @@ namespace BlondsCooking
             {
                 await LocalContentHelper.CheckForLocalFile();
             }
-            BackgroundExecutionManager.RequestAccessAsync();
             BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
             {
                 TaskEntryPoint = "BlondsCooking.Synchronization.BackgroundTask"
             };
             backgroundTaskBuilder.SetTrigger(new TimeTrigger(15, false));
             backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
-            IBackgroundTaskRegistration task = backgroundTaskBuilder.Register();
+            await BackgroundExecutionManager.RequestAccessAsync();
+            backgroundTaskBuilder.Register();
             
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
