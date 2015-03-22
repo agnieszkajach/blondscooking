@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureStorageHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureTableHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\FileStorageHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\LocalSettingsHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\XmlHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Category.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Recipe.cs" />
@@ -34,6 +35,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Animation\splashAnimation.gif" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cakes.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cookies.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\cupcake.png" />

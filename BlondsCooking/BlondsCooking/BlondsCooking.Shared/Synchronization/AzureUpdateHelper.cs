@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Background;
+using Windows.UI.Popups;
 using BlondsCooking.Helpers;
 
 namespace BlondsCooking.Synchronization

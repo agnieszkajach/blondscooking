@@ -1,17 +1,23 @@
 ﻿using System;
+using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Background;
+using Windows.Networking.Connectivity;
+using Windows.Networking.NetworkOperators;
 using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
 using BlondsCooking.Helpers;
 using BlondsCooking.Synchronization;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 using BlondsCooking.Views;
+using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace BlondsCooking
 {
@@ -22,7 +28,6 @@ namespace BlondsCooking
     {
         public static string Path = ApplicationData.Current.LocalFolder.Path + "\\";
         public static string FileName = "recipes.xml";
-        public static bool FirstLaunchOfApplication = false;
 
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
@@ -46,23 +51,40 @@ namespace BlondsCooking
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
+            //ConnectionProfile internetConnectionProfile = NetworkInformation.GetInternetConnectionProfile();
+            //if (internetConnectionProfile != null)
+            //{
+            //    var mes = new MessageDialog("asd");
+            //    await mes.ShowAsync();
+            //}
 
-            if (FirstLaunchOfApplication)
+            if (LocalSettingsHelper.CheckIfFirstLaunch())
             {
-                FirstLaunchOfApplication = false;
+                await LocalContentHelper.CheckForLocalFile();   
+                //if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+                //{
+                //    await AzureTableHelper.DownloadAllRecipes();
+                //    await AzureStorageHelper.DownloadAllImagesFromAzure();
+                //}
+                //else
+                //{
+                //    var messageDialog = new MessageDialog("No internet connection has been found.");
+                //    await messageDialog.ShowAsync();
+                //}
             }
             else
             {
                 await LocalContentHelper.CheckForLocalFile();
-                BackgroundExecutionManager.RequestAccessAsync();
-                BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
-                {
-                    TaskEntryPoint = "BlondsCooking.Synchronization.BackgroundTask"
-                };
-                backgroundTaskBuilder.SetTrigger(new TimeTrigger(15, false));
-                backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
-                IBackgroundTaskRegistration task = backgroundTaskBuilder.Register();
             }
+            BackgroundExecutionManager.RequestAccessAsync();
+            BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
+            {
+                TaskEntryPoint = "BlondsCooking.Synchronization.BackgroundTask"
+            };
+            backgroundTaskBuilder.SetTrigger(new TimeTrigger(15, false));
+            backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
+            IBackgroundTaskRegistration task = backgroundTaskBuilder.Register();
+            
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
