@@ -7,11 +7,13 @@ using BlondsCooking.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Views;
 
 namespace BlondsCooking.ViewModel
 {
     public class SelectedRecipeViewModel : ViewModelBase, IViewModel
     {
+        private INavigationService navigationService;
         private String selectedRecipe;
         private Recipe _selectedRecipe;
 
@@ -25,8 +27,9 @@ namespace BlondsCooking.ViewModel
             }
         }
 
-        public SelectedRecipeViewModel()
+        public SelectedRecipeViewModel(INavigationService navigationService)
         {
+            this.navigationService = navigationService;
             //Messenger.Default.Register<MessageToLoadRecipe>(this, LoadSelectedRecipe);    
         }
 
@@ -38,10 +41,12 @@ namespace BlondsCooking.ViewModel
 
         private async void Back(String NameOfWindowToNavigateTo)
         {
-            Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
-            paramsDictionary.Add("window", NameOfWindowToNavigateTo);
-            Messenger.Default.Send(new NavigationMessage("SelectedRecipe", paramsDictionary));
-            Messenger.Default.Send(new MessageToGetBackToCategory() {Message = await XmlHelper.GetCategoryByTitle(selectedRecipe)});
+            var category = await XmlHelper.GetCategoryByTitle(selectedRecipe);
+            navigationService.NavigateTo("Category", category);
+            //Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
+            //paramsDictionary.Add("window", NameOfWindowToNavigateTo);
+            //Messenger.Default.Send(new NavigationMessage("SelectedRecipe", paramsDictionary));
+            //Messenger.Default.Send(new MessageToGetBackToCategory() {Message = await XmlHelper.GetCategoryByTitle(selectedRecipe)});
         }
 
         private void LoadImageForSelectedRecipe()
