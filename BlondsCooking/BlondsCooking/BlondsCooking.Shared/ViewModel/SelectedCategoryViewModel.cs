@@ -55,32 +55,16 @@ namespace BlondsCooking.ViewModel
         public SelectedCategoryViewModel(INavigationService navigationService)
         {
             this.navigationService = navigationService;
-            //Messenger.Default.Register<MessageToGetBackToCategory>(this, LoadSelectedCategory);  
-            //LoadSelectedCategory(App.Data.ToString());
         }
 
-         public RelayCommand<String> BackCommand
+         public RelayCommand BackCommand
          {
-             get { return new RelayCommand<string>(i => Back("Main")); }
+             get { return new RelayCommand(() => navigationService.NavigateTo("Main")); }
          }
 
          public RelayCommand<String> OpenRecipeCommand
          {
              get { return new RelayCommand<String>(i => navigationService.NavigateTo("Recipe", i)); }
-         }
-
-         private void OpenRecipe(String nameOfWindowToNavigateTo, string recipe)
-         {
-             //Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
-             //paramsDictionary.Add("window", nameOfWindowToNavigateTo);
-             //Messenger.Default.Send(new NavigationMessage("SelectedRecipe", paramsDictionary));
-             //Messenger.Default.Send(new MessageToLoadRecipe() { Message = recipe });
-         }
-         private void Back(String nameOfWindowToNavigateTo)
-         {
-             Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
-             paramsDictionary.Add("window", nameOfWindowToNavigateTo);
-             Messenger.Default.Send(new NavigationMessage("SelectedCategory", paramsDictionary));
          }
 
 

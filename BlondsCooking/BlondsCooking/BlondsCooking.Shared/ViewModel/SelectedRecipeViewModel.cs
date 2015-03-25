@@ -29,8 +29,7 @@ namespace BlondsCooking.ViewModel
 
         public SelectedRecipeViewModel(INavigationService navigationService)
         {
-            this.navigationService = navigationService;
-            //Messenger.Default.Register<MessageToLoadRecipe>(this, LoadSelectedRecipe);    
+            this.navigationService = navigationService; 
         }
 
 
@@ -43,10 +42,6 @@ namespace BlondsCooking.ViewModel
         {
             var category = await XmlHelper.GetCategoryByTitle(selectedRecipe);
             navigationService.NavigateTo("Category", category);
-            //Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
-            //paramsDictionary.Add("window", NameOfWindowToNavigateTo);
-            //Messenger.Default.Send(new NavigationMessage("SelectedRecipe", paramsDictionary));
-            //Messenger.Default.Send(new MessageToGetBackToCategory() {Message = await XmlHelper.GetCategoryByTitle(selectedRecipe)});
         }
 
         private void LoadImageForSelectedRecipe()

@@ -16,10 +16,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Common\BasePage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Common\MessageToGetBackToCategory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Common\MessageToLoadRecipe.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\NavigationMessage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Common\NavigationServiceCustom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureStorageHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureTableHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\FileStorageHelper.cs" />
