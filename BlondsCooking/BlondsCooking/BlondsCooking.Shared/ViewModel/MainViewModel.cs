@@ -4,6 +4,7 @@ using BlondsCooking.Common;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Views;
 
 namespace BlondsCooking.ViewModel
 {
@@ -21,54 +22,63 @@ namespace BlondsCooking.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        private INavigationService navigationService;
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel()
+        public MainViewModel(INavigationService navigationService)
         {
-            
+            this.navigationService = navigationService;
         }
 
-        public RelayCommand<String> OpenMuffinWindowCoomand
+        public RelayCommand OpenMuffinWindowCoomand
         {
-            get { return new RelayCommand<String>(i => OpenWindow("muffin")); }
-        }
-
-        public RelayCommand<String> OpenCookieWindowCoomand
-        {
-            get { return new RelayCommand<String>(i => OpenWindow("cookie")); }
-        }
-
-        public RelayCommand<String> OpenCakeWindowCoomand
-        {
-            get { return new RelayCommand<String>(i => OpenWindow("cake")); }
-        }
-
-        public RelayCommand<String> OpenDinnerWindowCoomand
-        {
-            get { return new RelayCommand<String>(i => OpenWindow("dinner")); }
-        }
-
-        public RelayCommand<String> OpenPancakeWindowCoomand
-        {
-            get { return new RelayCommand<String>(i => OpenWindow("pancake")); }
-        }
-
-        public RelayCommand<String> OpenShakeWindowCoomand
-        {
-            get { return new RelayCommand<String>(i => OpenWindow("shake")); }
-        }
-
-        private void OpenWindow(String nameOfWindowsToNavigateTo)
-        {
-            var paramsDictionary = new Dictionary<string, string>
+            get { return new RelayCommand(() =>
             {
-                {"window", "SelectedCategory"},
-                {"category", nameOfWindowsToNavigateTo}
-            };
-            Messenger.Default.Send(new NavigationMessage("SelectedCategory", paramsDictionary));
-            Messenger.Default.Send(new MessageToGetBackToCategory() { Message = nameOfWindowsToNavigateTo });
-
+                navigationService.NavigateTo("Category", "muffin");
+            }); }
         }
+
+        public RelayCommand OpenCookieWindowCoomand
+        {
+            get { return new RelayCommand(() =>
+            {
+                navigationService.NavigateTo("Category", "cookie");
+            }); }
+        }
+
+        public RelayCommand OpenCakeWindowCoomand
+        {
+            get { return new RelayCommand(() =>
+            {
+                navigationService.NavigateTo("Category", "cake");
+            }); }
+        }
+
+        public RelayCommand OpenDinnerWindowCoomand
+        {
+            get { return new RelayCommand(() =>
+            {
+                navigationService.NavigateTo("Category", "dinner");
+            }); }
+        }
+
+        public RelayCommand OpenPancakeWindowCoomand
+        {
+            get { return new RelayCommand(() =>
+            {
+                navigationService.NavigateTo("Category", "pancake");
+            }); }
+        }
+
+        public RelayCommand OpenShakeWindowCoomand
+        {
+            get { return new RelayCommand(() =>
+            {
+                navigationService.NavigateTo("Category", "shake");
+            });
+            }
+        }
+
     }
 }

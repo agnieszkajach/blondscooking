@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
+using BlondsCooking.ViewModel;
 using BlondsCooking.Views;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 
 namespace BlondsCooking.Common
 {
     public class BasePage : Page
     {
+        private IViewModel viewModel;
         private Dictionary<String, Type> listOfWindows = new Dictionary<string, Type>();
         public BasePage()
         {
@@ -27,6 +31,14 @@ namespace BlondsCooking.Common
             listOfWindows.TryGetValue(nameOfWindowToNavigateTo, out window);
             message.QueryStringParams.TryGetValue("category", out details);
             Frame.Navigate(window, details);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var parameter = e.Parameter;
+            viewModel = this.DataContext as IViewModel;
+            if (viewModel != null) viewModel.LoadData(e.Parameter.ToString());
+            base.OnNavigatedTo(e);
         }
     }
 }

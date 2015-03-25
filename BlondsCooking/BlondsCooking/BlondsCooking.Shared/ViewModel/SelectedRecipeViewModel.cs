@@ -10,7 +10,7 @@ using GalaSoft.MvvmLight.Messaging;
 
 namespace BlondsCooking.ViewModel
 {
-    public class SelectedRecipeViewModel : ViewModelBase
+    public class SelectedRecipeViewModel : ViewModelBase, IViewModel
     {
         private String selectedRecipe;
         private Recipe _selectedRecipe;
@@ -27,15 +27,9 @@ namespace BlondsCooking.ViewModel
 
         public SelectedRecipeViewModel()
         {
-            Messenger.Default.Register<MessageToLoadRecipe>(this, LoadSelectedRecipe);    
+            //Messenger.Default.Register<MessageToLoadRecipe>(this, LoadSelectedRecipe);    
         }
 
-        private async void LoadSelectedRecipe(MessageToLoadRecipe messageBetweenViewModels)
-        {
-            selectedRecipe = messageBetweenViewModels.Message;
-            SelectedRecipe = await XmlHelper.GetRecipeByTitle(selectedRecipe);
-            LoadImageForSelectedRecipe();
-        }
 
         public RelayCommand<String> BackCommand
         {
@@ -54,6 +48,13 @@ namespace BlondsCooking.ViewModel
         {
             SelectedRecipe.UrlToImage = App.Path + SelectedRecipe.UrlToImage;
             RaisePropertyChanged(() => SelectedRecipe);
+        }
+
+        public async void LoadData(string data)
+        {
+            selectedRecipe = data;
+            SelectedRecipe = await XmlHelper.GetRecipeByTitle(selectedRecipe);
+            LoadImageForSelectedRecipe();
         }
     }
 }

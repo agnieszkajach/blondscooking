@@ -11,9 +11,14 @@
   You can also use Blend to do all this with the tool's support.
   See http://www.galasoft.ch/mvvm
 */
+#if WINDOWS_PHONE_APP
+using Windows.Phone.UI.Input;
+#endif
 
+using BlondsCooking.Views;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 
 namespace BlondsCooking.ViewModel
@@ -30,10 +35,21 @@ namespace BlondsCooking.ViewModel
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            var navigationService = this.CreateNavigationService();
+            SimpleIoc.Default.Register<INavigationService>(() => navigationService);
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<SelectedCategoryViewModel>();
             SimpleIoc.Default.Register<SelectedRecipeViewModel>();
+        }
+
+        private INavigationService CreateNavigationService()
+        {
+            var navigationService = new NavigationService();
+            navigationService.Configure("Main", typeof(MainPage));
+            navigationService.Configure("Category", typeof(SelectedCategoryView));
+            navigationService.Configure("Recipe", typeof(SelectedRecipeView));
+            return navigationService;
         }
 
         public MainViewModel Main

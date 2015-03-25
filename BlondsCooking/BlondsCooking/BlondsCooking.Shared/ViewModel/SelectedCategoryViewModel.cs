@@ -10,11 +10,13 @@ using BlondsCooking.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Views;
 
 namespace BlondsCooking.ViewModel
 {
-    public class SelectedCategoryViewModel : ViewModelBase
+    public class SelectedCategoryViewModel : ViewModelBase, IViewModel
     {
+        private INavigationService navigationService;
         private String _selectedCategory;
         private Recipe _selectedRecipe;
         private ObservableCollection<Recipe> _recipesInSelectedCategory; 
@@ -50,10 +52,12 @@ namespace BlondsCooking.ViewModel
             }
         }
 
-         public SelectedCategoryViewModel()
-         {
-            Messenger.Default.Register<MessageToGetBackToCategory>(this, LoadSelectedCategory);     
-         }
+        public SelectedCategoryViewModel(INavigationService navigationService)
+        {
+            this.navigationService = navigationService;
+            //Messenger.Default.Register<MessageToGetBackToCategory>(this, LoadSelectedCategory);  
+            //LoadSelectedCategory(App.Data.ToString());
+        }
 
          public RelayCommand<String> BackCommand
          {
@@ -62,15 +66,15 @@ namespace BlondsCooking.ViewModel
 
          public RelayCommand<String> OpenRecipeCommand
          {
-             get { return new RelayCommand<String>(i => OpenRecipe("SelectedRecipe", i)); }
+             get { return new RelayCommand<String>(i => navigationService.NavigateTo("Recipe", i)); }
          }
 
          private void OpenRecipe(String nameOfWindowToNavigateTo, string recipe)
          {
-             Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
-             paramsDictionary.Add("window", nameOfWindowToNavigateTo);
-             Messenger.Default.Send(new NavigationMessage("SelectedRecipe", paramsDictionary));
-             Messenger.Default.Send(new MessageToLoadRecipe() { Message = recipe });
+             //Dictionary<String, String> paramsDictionary = new Dictionary<string, string>();
+             //paramsDictionary.Add("window", nameOfWindowToNavigateTo);
+             //Messenger.Default.Send(new NavigationMessage("SelectedRecipe", paramsDictionary));
+             //Messenger.Default.Send(new MessageToLoadRecipe() { Message = recipe });
          }
          private void Back(String nameOfWindowToNavigateTo)
          {
@@ -79,12 +83,6 @@ namespace BlondsCooking.ViewModel
              Messenger.Default.Send(new NavigationMessage("SelectedCategory", paramsDictionary));
          }
 
-         private async void LoadSelectedCategory(MessageToGetBackToCategory messageToGetBackToCategory)
-         {
-             SelectedCategory = messageToGetBackToCategory.Message;
-             var recipes = await XmlHelper.GetRecipesByCategory(SelectedCategory);
-             LoadImagesForSelectedCategory(recipes);
-         }
 
         private void LoadImagesForSelectedCategory(IList<Recipe> recipes)
         {
@@ -95,5 +93,12 @@ namespace BlondsCooking.ViewModel
             RecipesInSelectedCategory = new ObservableCollection<Recipe>(recipes);
         }
 
+
+        public async void LoadData(string data)
+        {
+            SelectedCategory = data;
+            var recipes = await XmlHelper.GetRecipesByCategory(SelectedCategory);
+            LoadImagesForSelectedCategory(recipes);
+        }
     }
 }

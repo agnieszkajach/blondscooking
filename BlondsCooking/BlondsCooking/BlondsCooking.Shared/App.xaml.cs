@@ -18,6 +18,8 @@ using BlondsCooking.Synchronization;
 using BlondsCooking.Views;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Animation;
+using BlondsCooking.Common;
+using GalaSoft.MvvmLight.Views;
 
 namespace BlondsCooking
 {
