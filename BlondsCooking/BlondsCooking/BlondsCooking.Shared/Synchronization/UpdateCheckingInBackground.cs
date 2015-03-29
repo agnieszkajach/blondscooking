@@ -5,7 +5,7 @@ using Windows.ApplicationModel.Background;
 
 namespace BlondsCooking.Synchronization
 {
-    public class BackgroundTask : IBackgroundTask
+    public class UpdateCheckingInBackground : IBackgroundTask
     {
         public async void Run(IBackgroundTaskInstance taskInstance)
         {
