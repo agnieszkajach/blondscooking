@@ -28,7 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Synchronization\BackgroundDataDownloader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Synchronization\UpdateCheckingInBackground.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Synchronization\LocalContentHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\IViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\INavigable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\SelectedCategoryViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\SelectedRecipeViewModel.cs" />

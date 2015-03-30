@@ -41,6 +41,9 @@ namespace BlondsCooking.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<SelectedCategoryViewModel>();
             SimpleIoc.Default.Register<SelectedRecipeViewModel>();
+            SimpleIoc.Default.Register<MainPage>();
+            SimpleIoc.Default.Register<SelectedCategoryView>();
+            SimpleIoc.Default.Register<SelectedRecipeView>();
         }
 
         private INavigationService CreateNavigationService()

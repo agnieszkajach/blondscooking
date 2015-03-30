@@ -11,7 +11,7 @@ using GalaSoft.MvvmLight.Views;
 
 namespace BlondsCooking.ViewModel
 {
-    public class SelectedRecipeViewModel : ViewModelBase, IViewModel
+    public class SelectedRecipeViewModel : ViewModelBase, INavigable
     {
         private INavigationService navigationService;
         private String selectedRecipe;
@@ -50,11 +50,16 @@ namespace BlondsCooking.ViewModel
             RaisePropertyChanged(() => SelectedRecipe);
         }
 
-        public async void LoadData(string data)
+        public async void Activate(string parameter)
         {
-            selectedRecipe = data;
+            selectedRecipe = parameter;
             SelectedRecipe = await XmlHelper.GetRecipeByTitle(selectedRecipe);
             LoadImageForSelectedRecipe();
+        }
+
+        public void Deactivate()
+        {
+            
         }
     }
 }

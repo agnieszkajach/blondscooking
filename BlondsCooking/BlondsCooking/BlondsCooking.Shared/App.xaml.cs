@@ -5,12 +5,18 @@ using System.Net.NetworkInformation;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Background;
+using Windows.Foundation;
 using Windows.Networking.Connectivity;
 using Windows.Networking.NetworkOperators;
+#if WINDOWS_PHONE_APP
+using Windows.Phone.UI.Input;
+#endif
 using Windows.Storage;
+using Windows.System.Threading;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Documents;
 using BlondsCooking.Helpers;
 using BlondsCooking.Synchronization;
 
@@ -43,8 +49,22 @@ namespace BlondsCooking
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+#if WINDOWS_PHONE_APP
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+#endif
         }
+#if WINDOWS_PHONE_APP
+        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
 
+            if (rootFrame != null && rootFrame.CanGoBack)
+            {
+                e.Handled = true;
+                rootFrame.GoBack();
+            }
+        }
+#endif
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used when the application is launched to open a specific file, to display
@@ -53,34 +73,12 @@ namespace BlondsCooking
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            //ConnectionProfile internetConnectionProfile = NetworkInformation.GetInternetConnectionProfile();
-            //if (internetConnectionProfile != null)
-            //{
-            //    var mes = new MessageDialog("asd");
-            //    await mes.ShowAsync();
-            //}
+            BackgroundDataDownloader backgroundDataDownloader = new BackgroundDataDownloader();
+            Windows.System.Threading.ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => backgroundDataDownloader.Run()), WorkItemPriority.High);
 
-            if (LocalSettingsHelper.CheckIfFirstLaunch())
-            {
-                await LocalContentHelper.CheckForLocalFile();   
-                //if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
-                //{
-                //    await AzureTableHelper.DownloadAllRecipes();
-                //    await AzureStorageHelper.DownloadAllImagesFromAzure();
-                //}
-                //else
-                //{
-                //    var messageDialog = new MessageDialog("No internet connection has been found.");
-                //    await messageDialog.ShowAsync();
-                //}
-            }
-            else
-            {
-                await LocalContentHelper.CheckForLocalFile();
-            }
             BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
             {
-                TaskEntryPoint = "BlondsCooking.Synchronization.BackgroundTask"
+                TaskEntryPoint = "BlondsCooking.Synchronization.UpdateCheckingInBackground"
             };
             backgroundTaskBuilder.SetTrigger(new TimeTrigger(15, false));
             backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));

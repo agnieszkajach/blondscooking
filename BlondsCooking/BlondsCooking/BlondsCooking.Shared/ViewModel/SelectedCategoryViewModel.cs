@@ -14,7 +14,7 @@ using GalaSoft.MvvmLight.Views;
 
 namespace BlondsCooking.ViewModel
 {
-    public class SelectedCategoryViewModel : ViewModelBase, IViewModel
+    public class SelectedCategoryViewModel : ViewModelBase, INavigable
     {
         private INavigationService navigationService;
         private String _selectedCategory;
@@ -59,7 +59,7 @@ namespace BlondsCooking.ViewModel
 
          public RelayCommand BackCommand
          {
-             get { return new RelayCommand(() => navigationService.NavigateTo("Main")); }
+             get { return new RelayCommand(() => navigationService.NavigateTo("Main", " ")); }
          }
 
          public RelayCommand<String> OpenRecipeCommand
@@ -78,11 +78,16 @@ namespace BlondsCooking.ViewModel
         }
 
 
-        public async void LoadData(string data)
+        public async void Activate(string parameter)
         {
-            SelectedCategory = data;
+            SelectedCategory = parameter;
             var recipes = await XmlHelper.GetRecipesByCategory(SelectedCategory);
             LoadImagesForSelectedCategory(recipes);
+        }
+
+        public void Deactivate()
+        {
+           
         }
     }
 }

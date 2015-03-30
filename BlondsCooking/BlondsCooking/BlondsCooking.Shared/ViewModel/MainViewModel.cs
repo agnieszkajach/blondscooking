@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Windows.UI.WebUI;
 using BlondsCooking.Common;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -20,7 +21,7 @@ namespace BlondsCooking.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase, INavigable
     {
         private INavigationService navigationService;
         /// <summary>
@@ -80,5 +81,14 @@ namespace BlondsCooking.ViewModel
             }
         }
 
+        public void Activate(string parameter)
+        {
+            
+        }
+
+        public void Deactivate()
+        {
+            
+        }
     }
 }
