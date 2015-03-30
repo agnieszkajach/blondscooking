@@ -9,6 +9,7 @@ namespace BlondsCooking.Common
         public BasePage()
         {
 
+
         }
 
 
