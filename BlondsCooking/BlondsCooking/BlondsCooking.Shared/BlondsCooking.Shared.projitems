@@ -50,8 +50,11 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\mainbackground.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\mainLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\photos.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\properties-black.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\properties.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\shopping-black.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\shopping.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\termometr.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\time.png" />
   </ItemGroup>
 </Project>

@@ -30,31 +30,47 @@
            </Grid.RowDefinitions>
             <Grid Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="1.5*" />
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.5*" />
                 </Grid.ColumnDefinitions>
-                <!--<Image Grid.Column="1" Source="../Assets/Recipe/"></Image>-->
-                <Image Grid.Column="3" Source="../Assets/Recipe/time.png" HorizontalAlignment="Left"></Image>
-                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Grid.Column="0" Text="{Binding SelectedRecipe.Title}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Grid.Column="2" Text="{Binding SelectedRecipe.Temperature}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Grid.Column="4" Text="{Binding SelectedRecipe.Time}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Image Grid.Column="2" Source="../Assets/Recipe/termometr.png"></Image>
+                <Image Grid.Column="4" Source="../Assets/Recipe/time.png" HorizontalAlignment="Left" ></Image>
+                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Grid.Column="0" FontSize="40" Text="{Binding SelectedRecipe.Title}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Grid.Column="3" FontSize="20" Text="{Binding SelectedRecipe.Temperature}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Grid.Column="5" FontSize="20" Text="{Binding SelectedRecipe.Time}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Source="{Binding SelectedRecipe.UrlToImage}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20"/>
+                <Image Grid.Column="0" Source="{Binding SelectedRecipe.UrlToImage}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20,0"/>
                 <Grid Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedRecipe.Ingredients}" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
-                    <TextBlock Grid.Row="1" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedRecipe.Text}" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
+                    <Grid Grid.Row="1">
+                        <Grid.Background>White</Grid.Background>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Column="0" MaxHeight="50" Grid.Row="0" VerticalAlignment="Top" Source="../Assets/Recipe/shopping-black.png" Margin="0,10"></Image>
+                        <Image Grid.Column="0" Grid.Row="1" MaxHeight="50"  VerticalAlignment="Top" Source="../Assets/Recipe/properties-black.png" Margin="0,10"></Image>
+                        <TextBlock Grid.Column="1" Foreground="Black" Grid.Row="0" Margin="0,10" FontSize="15" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedRecipe.Ingredients}" VerticalAlignment="Top" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
+                        <TextBlock Grid.Column="1" Foreground="Black" Grid.Row="1" Margin="0,10" FontSize="15" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedRecipe.Text}" VerticalAlignment="top" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
+                    </Grid>
+                    
                 </Grid>
             </Grid>
         </Grid>
