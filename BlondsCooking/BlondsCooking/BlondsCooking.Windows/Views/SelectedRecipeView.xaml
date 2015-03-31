@@ -38,9 +38,9 @@
                 </Grid.ColumnDefinitions>
                 <!--<Image Grid.Column="1" Source="../Assets/Recipe/"></Image>-->
                 <Image Grid.Column="3" Source="../Assets/Recipe/time.png" HorizontalAlignment="Left"></Image>
-                <TextBlock Grid.Column="0" Text="{Binding SelectedRecipe.Title}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Column="2" Text="{Binding SelectedRecipe.Temperature}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Column="4" Text="{Binding SelectedRecipe.Time}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Grid.Column="0" Text="{Binding SelectedRecipe.Title}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Grid.Column="2" Text="{Binding SelectedRecipe.Temperature}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Grid.Column="4" Text="{Binding SelectedRecipe.Time}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -53,8 +53,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="{Binding SelectedRecipe.Ingredients}" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
-                    <TextBlock Grid.Row="1" Text="{Binding SelectedRecipe.Text}" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
+                    <TextBlock Grid.Row="0" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedRecipe.Ingredients}" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
+                    <TextBlock Grid.Row="1" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedRecipe.Text}" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
                 </Grid>
             </Grid>
         </Grid>

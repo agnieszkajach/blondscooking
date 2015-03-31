@@ -44,6 +44,8 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\pancake.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\shake.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Categories\soups.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Fonts\Idealist-Light.otf" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Fonts\Idealist.otf" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Layout\back.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\mainbackground.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\mainLogo.png" />
