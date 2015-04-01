@@ -22,6 +22,15 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" VerticalAlignment="Bottom" Source="{Binding UrlToImageOfCategory}"></Image>
+            <TextBlock Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30"  FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedCategory, Converter={StaticResource ConvertTextToUpper}}" />
+        </Grid>
 
         <GridView Grid.Column="1" Grid.Row="1" SelectedItem="{Binding SelectedRecipe}" ItemsSource="{Binding RecipesInSelectedCategory}" Margin="20">
             <GridView.ItemTemplate>

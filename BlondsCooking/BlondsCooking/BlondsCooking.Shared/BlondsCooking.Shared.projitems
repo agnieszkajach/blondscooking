@@ -16,6 +16,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Common\BasePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ConvertTextToUpper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\NavigationMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureStorageHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureTableHelper.cs" />
@@ -47,6 +48,12 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Fonts\Idealist-Light.otf" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Fonts\Idealist.otf" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Layout\back.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Layout\cake.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Layout\cookie.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Layout\dinner.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Layout\muffin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Layout\pancake.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Layout\shake.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\mainbackground.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\mainLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Recipe\photos.png" />

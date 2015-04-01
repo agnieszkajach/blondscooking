@@ -19,7 +19,8 @@ namespace BlondsCooking.ViewModel
         private INavigationService navigationService;
         private String _selectedCategory;
         private Recipe _selectedRecipe;
-        private ObservableCollection<Recipe> _recipesInSelectedCategory; 
+        private ObservableCollection<Recipe> _recipesInSelectedCategory;
+        private String _urlToImageOfCategory;
 
         public Recipe SelectedRecipe
         {
@@ -52,6 +53,16 @@ namespace BlondsCooking.ViewModel
             }
         }
 
+        public string UrlToImageOfCategory
+        {
+            get { return _urlToImageOfCategory;}
+            set
+            {
+                _urlToImageOfCategory = value;
+                RaisePropertyChanged(() => UrlToImageOfCategory);
+            }
+        }
+
         public SelectedCategoryViewModel(INavigationService navigationService)
         {
             this.navigationService = navigationService;
@@ -80,6 +91,7 @@ namespace BlondsCooking.ViewModel
 
         public async void Activate(string parameter)
         {
+            UrlToImageOfCategory = "../Assets/Layout/" + parameter +".png";
             SelectedCategory = parameter;
             var recipes = await XmlHelper.GetRecipesByCategory(SelectedCategory);
             LoadImagesForSelectedCategory(recipes);
