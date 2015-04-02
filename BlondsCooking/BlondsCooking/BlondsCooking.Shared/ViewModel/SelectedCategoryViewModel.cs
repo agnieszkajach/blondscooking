@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 using BlondsCooking.Common;
 using BlondsCooking.Helpers;
 using BlondsCooking.Model;
@@ -21,6 +23,7 @@ namespace BlondsCooking.ViewModel
         private Recipe _selectedRecipe;
         private ObservableCollection<Recipe> _recipesInSelectedCategory;
         private String _urlToImageOfCategory;
+        private readonly Services.IDialogService dialogService;
 
         public Recipe SelectedRecipe
         {
@@ -63,9 +66,10 @@ namespace BlondsCooking.ViewModel
             }
         }
 
-        public SelectedCategoryViewModel(INavigationService navigationService)
+        public SelectedCategoryViewModel(INavigationService navigationService, Services.IDialogService dialogService)
         {
             this.navigationService = navigationService;
+            this.dialogService = dialogService;
         }
 
          public RelayCommand BackCommand
@@ -93,8 +97,15 @@ namespace BlondsCooking.ViewModel
         {
             UrlToImageOfCategory = "../Assets/Layout/" + parameter +".png";
             SelectedCategory = parameter;
-            var recipes = await XmlHelper.GetRecipesByCategory(SelectedCategory);
-            LoadImagesForSelectedCategory(recipes);
+            try
+            {
+                var recipes = await XmlHelper.GetRecipesByCategory(SelectedCategory);
+                LoadImagesForSelectedCategory(recipes);
+            }
+            catch (FileNotFoundException ex)
+            {
+                dialogService.ShowMessage("Please be patient. We are downloading delicious stuff espacially for You ♥");
+            }           
         }
 
         public void Deactivate()

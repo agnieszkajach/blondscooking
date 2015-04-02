@@ -25,6 +25,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\XmlHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Category.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Recipe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DialogService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IDialogService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Synchronization\AzureUpdateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Synchronization\BackgroundDataDownloader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Synchronization\UpdateCheckingInBackground.cs" />

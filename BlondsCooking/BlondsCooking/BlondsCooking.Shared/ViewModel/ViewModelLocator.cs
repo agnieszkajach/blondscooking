@@ -20,6 +20,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
+using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 
 namespace BlondsCooking.ViewModel
 {
@@ -37,13 +38,18 @@ namespace BlondsCooking.ViewModel
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             var navigationService = this.CreateNavigationService();
             SimpleIoc.Default.Register<INavigationService>(() => navigationService);
+            var dialogService = this.createDialogService();
+            SimpleIoc.Default.Register<Services.IDialogService>(() => dialogService);
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<SelectedCategoryViewModel>();
             SimpleIoc.Default.Register<SelectedRecipeViewModel>();
-            SimpleIoc.Default.Register<MainPage>();
-            SimpleIoc.Default.Register<SelectedCategoryView>();
-            SimpleIoc.Default.Register<SelectedRecipeView>();
+        }
+
+        private Services.IDialogService createDialogService()
+        {
+            var dialogService = new Services.DialogService();
+            return dialogService;
         }
 
         private INavigationService CreateNavigationService()

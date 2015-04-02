@@ -67,8 +67,8 @@
                         </Grid.RowDefinitions>
                         <Image Grid.Column="0" MaxHeight="50" Grid.Row="0" VerticalAlignment="Top" Source="../Assets/Recipe/shopping-black.png" Margin="0,10"></Image>
                         <Image Grid.Column="0" Grid.Row="1" MaxHeight="50"  VerticalAlignment="Top" Source="../Assets/Recipe/properties-black.png" Margin="0,10"></Image>
-                        <TextBlock Grid.Column="1" Foreground="Black" Grid.Row="0" Margin="0,10" FontSize="15" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedRecipe.Ingredients}" VerticalAlignment="Top" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
-                        <TextBlock Grid.Column="1" Foreground="Black" Grid.Row="1" Margin="0,10" FontSize="15" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedRecipe.Text}" VerticalAlignment="top" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
+                        <TextBlock  Grid.Column="1" Foreground="Black" Grid.Row="0" Margin="0,10,20,10" FontSize="15" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedRecipe.Ingredients}" VerticalAlignment="Top" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
+                        <TextBlock Grid.Column="1" Foreground="Black" Grid.Row="1" Margin="0,10,20,10" FontSize="15" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedRecipe.Text}" VerticalAlignment="top" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
                     </Grid>
                     
                 </Grid>
