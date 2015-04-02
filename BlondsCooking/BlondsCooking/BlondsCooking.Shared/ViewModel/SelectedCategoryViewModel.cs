@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
@@ -95,6 +96,7 @@ namespace BlondsCooking.ViewModel
 
         public async void Activate(string parameter)
         {
+            ExceptionDispatchInfo capturedException = null;
             UrlToImageOfCategory = "../Assets/Layout/" + parameter +".png";
             SelectedCategory = parameter;
             try
@@ -104,8 +106,12 @@ namespace BlondsCooking.ViewModel
             }
             catch (FileNotFoundException ex)
             {
-                dialogService.ShowMessage("Please be patient. We are downloading delicious stuff espacially for You ♥");
-            }           
+                capturedException = ExceptionDispatchInfo.Capture(ex);               
+            }
+            if (capturedException != null)
+            {
+                await dialogService.ShowMessage("Please be patient. We are downloading delicious stuff espacially for You ♥");
+            }
         }
 
         public void Deactivate()

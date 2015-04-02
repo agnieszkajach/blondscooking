@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Windows.UI.Popups;
 
 namespace BlondsCooking.Services
 {
     public class DialogService : IDialogService
     {
-        public void ShowMessage(string message)
+        public async Task ShowMessage(string message)
         {
             var msg = new MessageDialog(message);
-            msg.ShowAsync();
+            await msg.ShowAsync();
         }
     }
 }

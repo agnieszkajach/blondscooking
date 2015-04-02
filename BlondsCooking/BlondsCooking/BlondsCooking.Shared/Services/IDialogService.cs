@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BlondsCooking.Services
 {
     public interface IDialogService
     {
-        void ShowMessage(string message);
+        Task ShowMessage(string message);
     }
 }

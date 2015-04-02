@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Windows.UI.Popups;
 using BlondsCooking.Helpers;
+using BlondsCooking.Services;
 
 namespace BlondsCooking.Synchronization
 {
@@ -7,15 +9,8 @@ namespace BlondsCooking.Synchronization
     {
         public async Task Run()
         {
-            if (LocalSettingsHelper.CheckIfFirstLaunch())
-            {
-                await AzureStorageHelper.DownloadAllImagesFromAzure();
-                await AzureTableHelper.DownloadAllRecipes();
-            }
-            else
-            {
-                await LocalContentHelper.CheckForLocalFile();
-            }
+            await AzureTableHelper.DownloadAllRecipes();
+            await AzureStorageHelper.DownloadAllImagesFromAzure();         
         }
     }
 }

@@ -26,6 +26,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Animation;
 using BlondsCooking.Common;
 using GalaSoft.MvvmLight.Views;
+using BlondsCooking.Services;
 
 namespace BlondsCooking
 {
@@ -73,8 +74,29 @@ namespace BlondsCooking
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            BackgroundDataDownloader backgroundDataDownloader = new BackgroundDataDownloader();
-            Windows.System.Threading.ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => backgroundDataDownloader.Run()), WorkItemPriority.High);
+            ConnectionHelper connectionHelper = new ConnectionHelper();
+            var isConnected = connectionHelper.IsConnectedToInternet();
+            if (LocalSettingsHelper.CheckIfFirstLaunch())
+            {
+                if (isConnected)
+                {
+                    BackgroundDataDownloader backgroundDataDownloader = new BackgroundDataDownloader();
+                    Windows.System.Threading.ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => backgroundDataDownloader.Run()), WorkItemPriority.High);
+                }
+                else
+                {
+                    Services.IDialogService dialogService = new Services.DialogService();
+                    await dialogService.ShowMessage(
+                        "Hey, you need to connect to Internet to get all that delicious stuff ♥");
+                    Application.Current.Exit();
+                }
+            }
+            else
+            {
+                await LocalContentHelper.CheckForLocalFile();
+            }
+
+            
 
             BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
             {
