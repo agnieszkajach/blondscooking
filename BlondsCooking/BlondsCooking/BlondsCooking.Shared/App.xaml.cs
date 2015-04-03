@@ -93,7 +93,12 @@ namespace BlondsCooking
             }
             else
             {
-                await LocalContentHelper.CheckForLocalFile();
+                LocalContentHelper localContentHelper = new LocalContentHelper();
+                if (await localContentHelper.CheckForLocalFile())
+                {
+                    await localContentHelper.CheckForLocalImages();
+                }
+                
             }
 
             

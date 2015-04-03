@@ -83,5 +83,20 @@ namespace BlondsCooking.Helpers
             var titlesList = listFromXml.Select(r => r.Title).ToList();
             return titlesList;
         }
+
+        public static async Task<List<string>> GetImages()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Recipe>));
+            List<Recipe> listFromXml;
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFile file = await folder.GetFileAsync(App.FileName);
+            Stream stream = await file.OpenStreamForReadAsync();
+            using (stream)
+            {
+                listFromXml = (List<Recipe>)serializer.Deserialize(stream);
+            }
+            var imagesList = listFromXml.Select(r => r.UrlToImage).ToList();
+            return imagesList;
+        }
     }
 }
