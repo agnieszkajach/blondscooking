@@ -20,7 +20,7 @@
         <m2:SplashScreen Image="Assets\SplashScreen.png" />
       </m2:VisualElements>
       <Extensions>
-        <Extension Category="windows.backgroundTasks" EntryPoint="BlondsCooking.Synchronization.UpdateCheckingInBackground">
+        <Extension Category="windows.backgroundTasks" EntryPoint="BlondsCooking.Synchronization.UpdateCheckingInBackground.cs">
           <BackgroundTasks>
             <Task Type="timer" />
           </BackgroundTasks>
