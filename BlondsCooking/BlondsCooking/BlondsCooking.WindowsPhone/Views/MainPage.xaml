@@ -15,7 +15,7 @@
         </Pivot.Background>
         <PivotItem >
             <PivotItem.Header>
-                <TextBlock Foreground="White">Categories</TextBlock>
+                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Foreground="White">Categories</TextBlock>
             </PivotItem.Header>  
             <Grid>
                 <Grid.RowDefinitions>
@@ -49,8 +49,18 @@
        </PivotItem>
         <PivotItem>
             <PivotItem.Header>
-                <TextBlock Foreground="White">About</TextBlock>
+                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Foreground="White">About</TextBlock>
             </PivotItem.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Foreground="White" FontSize="30" Text="Two girls trying to reach your heart through stomach." TextWrapping="Wrap"/>
+                <TextBlock Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Foreground="White" FontSize="25" Text="Made with ♥" />
+                <TextBlock Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Foreground="White" FontSize="25" Text="Agnieszka &amp; Weronika" />
+            </Grid>
         </PivotItem>
     </Pivot>
 </common:BasePage>

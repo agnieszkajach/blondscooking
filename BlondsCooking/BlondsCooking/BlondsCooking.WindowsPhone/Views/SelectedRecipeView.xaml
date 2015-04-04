@@ -20,10 +20,12 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="6*"/>
                 </Grid.RowDefinitions>
+                <TextBlock VerticalAlignment="center" TextWrapping="Wrap" Grid.Row="1" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" FontSize="35" Text="{Binding SelectedRecipe.Title, Converter={StaticResource ConvertTextToUpper}}"/>
                 <Image Grid.Row="0" Source="../Assets/Recipe/photos.png" HorizontalAlignment="Left" />
-                <Image Grid.Row="1" Source="{Binding SelectedRecipe.UrlToImage}" />
+                <Image VerticalAlignment="Top" Grid.Row="2" Source="{Binding SelectedRecipe.UrlToImage}" />
             </Grid>
         </PivotItem>
         <PivotItem>
@@ -33,7 +35,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
                 <Image Grid.Row="0" Source="../Assets/Recipe/shopping.png" HorizontalAlignment="Left" />
                 <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Margin="0, 15, 0, 0" Grid.Row="1" TextWrapping="WrapWholeWords" FontSize="25" Text="{Binding SelectedRecipe.Ingredients}" />
@@ -46,7 +48,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
                 <Image Source="../Assets/Recipe/properties.png" HorizontalAlignment="Left"/>
                 <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Margin="0, 15, 0, 0" Grid.Row="1" TextWrapping="WrapWholeWords" FontSize="25"  Text="{Binding SelectedRecipe.Text}"/>

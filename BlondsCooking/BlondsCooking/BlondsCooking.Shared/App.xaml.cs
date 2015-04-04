@@ -74,6 +74,9 @@ namespace BlondsCooking
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
+            DocumentHelper documentHelper = new DocumentHelper();
+            documentHelper.CreateDocument();
+        
             ConnectionHelper connectionHelper = new ConnectionHelper();
             var isConnected = connectionHelper.IsConnectedToInternet();
             if (LocalSettingsHelper.CheckIfFirstLaunch())

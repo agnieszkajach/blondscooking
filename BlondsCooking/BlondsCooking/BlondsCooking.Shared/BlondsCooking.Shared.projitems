@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureStorageHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AzureTableHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ConnectionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DocumentHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\FileStorageHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\LocalSettingsHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\XmlHelper.cs" />

@@ -14,7 +14,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="../Assets/mainbackground.jpg"></ImageBrush>
         </Grid.Background>
-        <GridView Header="{Binding SelectedCategory}" FontSize="70" SelectedItem="{Binding SelectedRecipe}" ItemsSource="{Binding RecipesInSelectedCategory}" HorizontalAlignment="center">
+        <GridView Header="{Binding SelectedCategory, Converter={StaticResource ConvertTextToUpper}}" FontSize="70" SelectedItem="{Binding SelectedRecipe}" ItemsSource="{Binding RecipesInSelectedCategory}" HorizontalAlignment="center">
             <GridView.ItemTemplate>
                 <DataTemplate >
                     <Grid Margin="0,20">

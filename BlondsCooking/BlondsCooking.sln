@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlondsCooking.Windows", "Bl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlondsCooking.WindowsPhone", "BlondsCooking\BlondsCooking.WindowsPhone\BlondsCooking.WindowsPhone.csproj", "{38C6B738-2419-4EA7-B360-A1511691A83B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EB5E36F0-EEF4-48E4-91E5-09A5FF1E1447}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		BlondsCooking\BlondsCooking.Shared\BlondsCooking.Shared.projitems*{38c6b738-2419-4ea7-b360-a1511691a83b}*SharedItemsImports = 4
