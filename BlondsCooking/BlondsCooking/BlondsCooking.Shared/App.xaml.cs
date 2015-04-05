@@ -74,7 +74,7 @@ namespace BlondsCooking
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            BackgroundAccessStatus status = await BackgroundExecutionManager.RequestAccessAsync();
+            //BackgroundAccessStatus status = await BackgroundExecutionManager.RequestAccessAsync();
             ConnectionHelper connectionHelper = new ConnectionHelper();
             var isConnected = connectionHelper.IsConnectedToInternet();
             if (LocalSettingsHelper.CheckIfFirstLaunch())
@@ -102,17 +102,17 @@ namespace BlondsCooking
                 
             }
                       
-            if (status == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
-                status == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity)
-            {
-                BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
-                {
-                    TaskEntryPoint = "BlondsCooking.Synchronization.UpdateCheckingInBackground.cs"
-                };
-                backgroundTaskBuilder.SetTrigger(new TimeTrigger(15, false));
-                backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
-                backgroundTaskBuilder.Register();
-            }         
+            //if (status == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
+            //    status == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity)
+            //{
+            //    BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
+            //    {
+            //        TaskEntryPoint = "BlondsCooking.Synchronization.UpdateCheckingInBackground.cs"
+            //    };
+            //    backgroundTaskBuilder.SetTrigger(new TimeTrigger(15, false));
+            //    backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
+            //    backgroundTaskBuilder.Register();
+            //}         
             
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
