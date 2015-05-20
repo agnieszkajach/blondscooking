@@ -74,7 +74,11 @@ namespace BlondsCooking
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            //BackgroundAccessStatus status = await BackgroundExecutionManager.RequestAccessAsync();
+           // var status = BackgroundExecutionManager.GetAccessStatus();
+            //if (status == BackgroundAccessStatus.Unspecified || status == BackgroundAccessStatus.Denied)
+            //{
+            //    status = await BackgroundExecutionManager.RequestAccessAsync();
+            //}
             ConnectionHelper connectionHelper = new ConnectionHelper();
             var isConnected = connectionHelper.IsConnectedToInternet();
             if (LocalSettingsHelper.CheckIfFirstLaunch())
@@ -82,7 +86,7 @@ namespace BlondsCooking
                 if (isConnected)
                 {
                     BackgroundDataDownloader backgroundDataDownloader = new BackgroundDataDownloader();
-                    Windows.System.Threading.ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => backgroundDataDownloader.Run()), WorkItemPriority.High);
+                    await Windows.System.Threading.ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => backgroundDataDownloader.Run()), WorkItemPriority.High);
                 }
                 else
                 {
@@ -101,7 +105,7 @@ namespace BlondsCooking
                 }
                 
             }
-                      
+
             //if (status == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
             //    status == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity)
             //{
