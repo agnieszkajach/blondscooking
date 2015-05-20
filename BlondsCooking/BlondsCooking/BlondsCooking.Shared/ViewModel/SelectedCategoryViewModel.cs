@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Background;
 using Windows.UI.Popups;
 using BlondsCooking.Common;
 using BlondsCooking.Helpers;
@@ -14,7 +15,6 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
-using System.Collections.ObjectModel;
 
 namespace BlondsCooking.ViewModel
 {
@@ -72,6 +72,7 @@ namespace BlondsCooking.ViewModel
         {
             this.navigationService = navigationService;
             this.dialogService = dialogService;
+
         }
 
          public RelayCommand BackCommand

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Windows.ApplicationModel.Background;
 using Windows.UI.WebUI;
 using BlondsCooking.Common;
 using GalaSoft.MvvmLight;
@@ -30,6 +31,18 @@ namespace BlondsCooking.ViewModel
         public MainViewModel(INavigationService navigationService)
         {
             this.navigationService = navigationService;
+
+            if (App.BackgroundAccessStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
+                App.BackgroundAccessStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity)
+            {
+                BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
+                {
+                    TaskEntryPoint = "BlondsCooking.Synchronization.UpdateCheckingInBackground.cs"
+                };
+                backgroundTaskBuilder.SetTrigger(new TimeTrigger(15, false));
+                backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
+                backgroundTaskBuilder.Register();
+            } 
         }
 
         public RelayCommand OpenMuffinWindowCoomand
@@ -83,7 +96,6 @@ namespace BlondsCooking.ViewModel
 
         public void Activate(string parameter)
         {
-            
         }
 
         public void Deactivate()

@@ -36,6 +36,7 @@ namespace BlondsCooking
     public sealed partial class App : Application
     {
         public static string Path = ApplicationData.Current.LocalFolder.Path + "\\";
+        public static BackgroundAccessStatus BackgroundAccessStatus;
         public static string FileName = "recipes.xml";
 
 #if WINDOWS_PHONE_APP
@@ -73,12 +74,7 @@ namespace BlondsCooking
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
-        {
-           // var status = BackgroundExecutionManager.GetAccessStatus();
-            //if (status == BackgroundAccessStatus.Unspecified || status == BackgroundAccessStatus.Denied)
-            //{
-            //    status = await BackgroundExecutionManager.RequestAccessAsync();
-            //}
+        {           
             ConnectionHelper connectionHelper = new ConnectionHelper();
             var isConnected = connectionHelper.IsConnectedToInternet();
             if (LocalSettingsHelper.CheckIfFirstLaunch())
@@ -106,18 +102,7 @@ namespace BlondsCooking
                 
             }
 
-            //if (status == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
-            //    status == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity)
-            //{
-            //    BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
-            //    {
-            //        TaskEntryPoint = "BlondsCooking.Synchronization.UpdateCheckingInBackground.cs"
-            //    };
-            //    backgroundTaskBuilder.SetTrigger(new TimeTrigger(15, false));
-            //    backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
-            //    backgroundTaskBuilder.Register();
-            //}         
-            
+                              
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -174,6 +159,12 @@ namespace BlondsCooking
 
             // Ensure the current window is active
             Window.Current.Activate();
+            BackgroundAccessStatus = BackgroundExecutionManager.GetAccessStatus();
+            if (BackgroundAccessStatus == BackgroundAccessStatus.Unspecified || BackgroundAccessStatus == BackgroundAccessStatus.Denied)
+            {
+                BackgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
+            }
+            
         }
 
 #if WINDOWS_PHONE_APP
