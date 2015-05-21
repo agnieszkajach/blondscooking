@@ -37,7 +37,7 @@ namespace BlondsCooking.ViewModel
             {
                 BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
                 {
-                    TaskEntryPoint = "BlondsCooking.Synchronization.UpdateCheckingInBackground.cs"
+                    TaskEntryPoint = "BlondsCooking.Synchronization.UpdateCheckingInBackground"
                 };
                 backgroundTaskBuilder.SetTrigger(new TimeTrigger(15, false));
                 backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));

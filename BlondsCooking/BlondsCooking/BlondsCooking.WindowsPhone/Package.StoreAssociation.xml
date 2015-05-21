@@ -184,15 +184,16 @@
     <Language Code="vi-vn" InMinimumRequirementSet="true" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>55678Anomalia.BlondsBeta</MainPackageIdentityName>
+    <MainPackageIdentityName>55678Anomalia.BlondsCookingBeta</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>BlondsBeta</ReservedName>
+      <ReservedName>BlondsCookingBeta</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
     <MainPackageIdentityName>55678Anomalia.BlondsCooking</MainPackageIdentityName>
+    <MainPackageIdentityName>55678Anomalia.BlondsBeta</MainPackageIdentityName>
     <MainPackageIdentityName>55678Anomalia.Catvsmouse</MainPackageIdentityName>
     <MainPackageIdentityName>55678Anomalia.Frencheasytolearn</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://dev.windowsphone.com/AppSubmission/AssociationLanding?windowsProductId=e4a68cb3-f516-4fb9-9c54-421a74dc7270" />
+  <PackageInfoList LandingUrl="https://dev.windowsphone.com/AppSubmission/AssociationLanding?windowsProductId=484d57b8-3b0b-4234-8033-f628fba03f2a" />
 </StoreAssociation>

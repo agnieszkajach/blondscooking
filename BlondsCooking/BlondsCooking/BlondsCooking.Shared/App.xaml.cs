@@ -101,6 +101,11 @@ namespace BlondsCooking
                 }
                 
             }
+            BackgroundAccessStatus = BackgroundExecutionManager.GetAccessStatus();
+            if (BackgroundAccessStatus == BackgroundAccessStatus.Unspecified || BackgroundAccessStatus == BackgroundAccessStatus.Denied)
+            {
+                BackgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
+            }
 
                               
 #if DEBUG
@@ -159,11 +164,7 @@ namespace BlondsCooking
 
             // Ensure the current window is active
             Window.Current.Activate();
-            BackgroundAccessStatus = BackgroundExecutionManager.GetAccessStatus();
-            if (BackgroundAccessStatus == BackgroundAccessStatus.Unspecified || BackgroundAccessStatus == BackgroundAccessStatus.Denied)
-            {
-                BackgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
-            }
+            
             
         }
 
