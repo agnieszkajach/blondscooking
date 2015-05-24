@@ -9,6 +9,11 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using System.Collections.ObjectModel;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace BlondsCooking.ViewModel
 {
@@ -36,10 +41,15 @@ namespace BlondsCooking.ViewModel
 
         public RelayCommand<String> BackCommand
         {
-            get { return new RelayCommand<string>(i => Back("SelectedCategory")); }
+            get { return new RelayCommand<string>(i => Back()); }
         }
 
-        private async void Back(String NameOfWindowToNavigateTo)
+        public RelayCommand FullScreenCommand
+        {
+            get { return new RelayCommand(() => navigationService.NavigateTo("FullScreen", _selectedRecipe.UrlToImage)); }
+        }
+
+        private async void Back()
         {
             var category = await XmlHelper.GetCategoryByTitle(selectedRecipe);
             navigationService.NavigateTo("Category", category);

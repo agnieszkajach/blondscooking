@@ -44,6 +44,7 @@ namespace BlondsCooking.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<SelectedCategoryViewModel>();
             SimpleIoc.Default.Register<SelectedRecipeViewModel>();
+            SimpleIoc.Default.Register<FullScreenViewModel>();
         }
 
         private Services.IDialogService createDialogService()
@@ -58,6 +59,7 @@ namespace BlondsCooking.ViewModel
             navigationService.Configure("Main", typeof(MainPage));
             navigationService.Configure("Category", typeof(SelectedCategoryView));
             navigationService.Configure("Recipe", typeof(SelectedRecipeView));
+            navigationService.Configure("FullScreen", typeof(FullScreen));
             return navigationService;
         }
 
@@ -77,6 +79,11 @@ namespace BlondsCooking.ViewModel
         public SelectedRecipeViewModel SelectedRecipe
         {
             get { return ServiceLocator.Current.GetInstance<SelectedRecipeViewModel>(); }
+        }
+
+        public FullScreenViewModel FullScreen
+        {
+            get { return ServiceLocator.Current.GetInstance<FullScreenViewModel>(); }
         }
         
         public static void Cleanup()
