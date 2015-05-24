@@ -32,17 +32,17 @@ namespace BlondsCooking.ViewModel
         {
             this.navigationService = navigationService;
 
-            if (App.BackgroundAccessStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
-                App.BackgroundAccessStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity)
-            {
-                BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
-                {
-                    TaskEntryPoint = "BlondsCooking.Synchronization.UpdateCheckingInBackground"
-                };
-                backgroundTaskBuilder.SetTrigger(new TimeTrigger(15, false));
-                backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
-                backgroundTaskBuilder.Register();
-            } 
+            //if (App.BackgroundAccessStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
+            //    App.BackgroundAccessStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity)
+            //{
+            //    BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
+            //    {
+            //        TaskEntryPoint = "BlondsCooking.Synchronization.UpdateCheckingInBackground"
+            //    };
+            //    backgroundTaskBuilder.SetTrigger(new TimeTrigger(60, false));
+            //    backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
+            //    backgroundTaskBuilder.Register();
+            //} 
         }
 
         public RelayCommand OpenMuffinWindowCoomand

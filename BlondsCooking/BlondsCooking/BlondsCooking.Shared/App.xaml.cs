@@ -76,13 +76,15 @@ namespace BlondsCooking
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {           
             ConnectionHelper connectionHelper = new ConnectionHelper();
+            UpdateCheckingInBackground updateCheckingInBackground = new UpdateCheckingInBackground();
             var isConnected = connectionHelper.IsConnectedToInternet();
             if (LocalSettingsHelper.CheckIfFirstLaunch())
             {
                 if (isConnected)
                 {
                     BackgroundDataDownloader backgroundDataDownloader = new BackgroundDataDownloader();
-                    await Windows.System.Threading.ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => backgroundDataDownloader.Run()), WorkItemPriority.High);
+                    await ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => backgroundDataDownloader.Run()), WorkItemPriority.High);                
+                    await ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => updateCheckingInBackground.Run()), WorkItemPriority.Low);
                 }
                 else
                 {
@@ -95,17 +97,14 @@ namespace BlondsCooking
             else
             {
                 LocalContentHelper localContentHelper = new LocalContentHelper();
-                if (await localContentHelper.CheckForLocalFile())
-                {
-                    await localContentHelper.CheckForLocalImages();
-                }
-                
+                await ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => localContentHelper.RunLocalContent()), WorkItemPriority.High);
+                await ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => updateCheckingInBackground.Run()), WorkItemPriority.Low);
             }
-            BackgroundAccessStatus = BackgroundExecutionManager.GetAccessStatus();
-            if (BackgroundAccessStatus == BackgroundAccessStatus.Unspecified || BackgroundAccessStatus == BackgroundAccessStatus.Denied)
-            {
-                BackgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
-            }
+            //BackgroundAccessStatus = BackgroundExecutionManager.GetAccessStatus();
+            //if (BackgroundAccessStatus == BackgroundAccessStatus.Unspecified || BackgroundAccessStatus == BackgroundAccessStatus.Denied)
+            //{
+            //    BackgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
+            //}
 
                               
 #if DEBUG
