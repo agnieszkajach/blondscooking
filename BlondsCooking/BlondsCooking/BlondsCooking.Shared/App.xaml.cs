@@ -98,13 +98,8 @@ namespace BlondsCooking
             {
                 LocalContentHelper localContentHelper = new LocalContentHelper();
                 await ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => localContentHelper.RunLocalContent()), WorkItemPriority.High);
-                await ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => updateCheckingInBackground.Run()), WorkItemPriority.Low);
+                await ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => updateCheckingInBackground.Run()), WorkItemPriority.Normal);
             }
-            //BackgroundAccessStatus = BackgroundExecutionManager.GetAccessStatus();
-            //if (BackgroundAccessStatus == BackgroundAccessStatus.Unspecified || BackgroundAccessStatus == BackgroundAccessStatus.Denied)
-            //{
-            //    BackgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
-            //}
 
                               
 #if DEBUG
