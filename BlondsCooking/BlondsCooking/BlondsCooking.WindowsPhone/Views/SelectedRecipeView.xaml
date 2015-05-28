@@ -51,15 +51,20 @@
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>
-                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Foreground="White">Recipe</TextBlock>
+                    <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Foreground="White">Recipe</TextBlock>
             </PivotItem.Header>
             <Grid>
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
                 <Image Source="../Assets/Recipe/properties.png" HorizontalAlignment="Left"/>
-                <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Margin="0, 15, 0, 0" Grid.Row="1" TextWrapping="WrapWholeWords" FontSize="25"  Text="{Binding SelectedRecipe.Text}"/>
+                <Grid Grid.Row="1">
+                    <ListView>
+                        <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Margin="0, 15, 0, 0" Grid.Row="1" TextWrapping="WrapWholeWords" FontSize="25"  Text="{Binding SelectedRecipe.Text}"/>
+                    </ListView>
+                </Grid>
             </Grid>
         </PivotItem>
     </Pivot>
