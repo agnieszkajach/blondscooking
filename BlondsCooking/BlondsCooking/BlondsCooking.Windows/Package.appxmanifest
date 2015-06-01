@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="55678Anomalia.BetaVersionCooking" Publisher="CN=4A689A28-58CE-4299-AF6B-3C2008231B47" Version="1.1.0.0" />
+  <Identity Name="55678Anomalia.BlondsCooking" Publisher="CN=4A689A28-58CE-4299-AF6B-3C2008231B47" Version="1.1.0.4" />
   <Properties>
-    <DisplayName>BetaVersionCooking</DisplayName>
+    <DisplayName>Blond's Cooking</DisplayName>
     <PublisherDisplayName>Anomalia</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="BlondsCooking.Windows.App">
-      <m2:VisualElements DisplayName="BetaVersionCooking" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="BlondsCooking.Windows" ForegroundText="light" BackgroundColor="#464646" ToastCapable="false">
+      <m2:VisualElements DisplayName="Blond's Cooking" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="BlondsCooking.Windows" ForegroundText="light" BackgroundColor="#464646" ToastCapable="false">
         <m2:SplashScreen Image="Assets\SplashScreen.png" />
       </m2:VisualElements>
     </Application>

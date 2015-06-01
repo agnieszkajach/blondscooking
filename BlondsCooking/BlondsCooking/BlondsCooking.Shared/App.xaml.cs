@@ -38,6 +38,7 @@ namespace BlondsCooking
         public static string Path = ApplicationData.Current.LocalFolder.Path + "\\";
         public static BackgroundAccessStatus BackgroundAccessStatus;
         public static string FileName = "recipes.xml";
+        public static bool InternetNeeded = false;
 
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
@@ -74,7 +75,7 @@ namespace BlondsCooking
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
-        {           
+        {
             ConnectionHelper connectionHelper = new ConnectionHelper();
             UpdateCheckingInBackground updateCheckingInBackground = new UpdateCheckingInBackground();
             var isConnected = connectionHelper.IsConnectedToInternet();
@@ -88,10 +89,7 @@ namespace BlondsCooking
                 }
                 else
                 {
-                    Services.IDialogService dialogService = new Services.DialogService();
-                    await dialogService.ShowMessage(
-                        "Hey, you need to connect to Internet to get all that delicious stuff ♥");
-                    Application.Current.Exit();
+                    InternetNeeded = true;
                 }
             }
             else
@@ -158,8 +156,13 @@ namespace BlondsCooking
 
             // Ensure the current window is active
             Window.Current.Activate();
-            
-            
+            if (InternetNeeded)
+            {
+                Services.IDialogService dialogService = new Services.DialogService();
+                await dialogService.ShowMessage(
+                    "Hey, you need to connect to Internet to get all that delicious stuff ♥");
+            }
+           
         }
 
 #if WINDOWS_PHONE_APP

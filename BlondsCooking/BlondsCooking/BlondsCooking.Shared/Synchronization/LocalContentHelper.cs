@@ -47,10 +47,7 @@ namespace BlondsCooking.Synchronization
             }
             else
             {
-                IDialogService dialogService = new DialogService();
-                await dialogService.ShowMessage(
-                    "Hey, you need to connect to Internet to get delicious stuff ♥");
-                Application.Current.Exit();
+                App.InternetNeeded = true;
             }
             return true;
         }

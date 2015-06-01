@@ -348,15 +348,22 @@
     <Language Code="zu-za" InMinimumRequirementSet="true" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>55678Anomalia.BetaVersionCooking</MainPackageIdentityName>
+    <MainPackageIdentityName>55678Anomalia.BlondsCooking</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>BetaVersionCooking</ReservedName>
+      <ReservedName>Blond's Cooking</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
-    <MainPackageIdentityName>55678Anomalia.BlondsCooking</MainPackageIdentityName>
+    <MainPackageIdentityName>55678Anomalia.BlondsBeta</MainPackageIdentityName>
+    <MainPackageIdentityName>55678Anomalia.BlondsCookingBeta</MainPackageIdentityName>
     <MainPackageIdentityName>55678Anomalia.Catvsmouse</MainPackageIdentityName>
     <MainPackageIdentityName>55678Anomalia.Frencheasytolearn</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/23a75cc3-18a9-4dca-95dd-101de523c8b3" />
+  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/c8ff6a2a-a6d0-4bb6-8e6b-4f901b215638">
+    <PackageInfo>
+      <OsMinVersion>6.3.0.0</OsMinVersion>
+      <PackageArchitecture>neutral</PackageArchitecture>
+      <PackageMaxArchitectureVersion>1.1.0.3</PackageMaxArchitectureVersion>
+    </PackageInfo>
+  </PackageInfoList>
 </StoreAssociation>

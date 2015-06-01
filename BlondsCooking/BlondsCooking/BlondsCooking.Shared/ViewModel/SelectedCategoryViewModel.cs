@@ -110,10 +110,19 @@ namespace BlondsCooking.ViewModel
             {
                 capturedException = ExceptionDispatchInfo.Capture(ex);               
             }
-            if (capturedException != null)
+            if (App.InternetNeeded)
             {
-                await dialogService.ShowMessage("Please be patient. We are downloading delicious stuff espacially for You ♥");
+                await dialogService.ShowMessage(
+                    "Hey, you need to connect to Internet to get all that delicious stuff ♥");
             }
+            else
+            {
+                if (capturedException != null)
+                {
+                    await dialogService.ShowMessage("Please be patient. We are downloading delicious stuff espacially for You ♥");
+                }
+            }
+            
         }
 
         public void Deactivate()
