@@ -4,6 +4,8 @@ using System.Text;
 using Windows.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Threading.Tasks;
+using BlondsCooking.Synchronization;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BlondsCooking.Helpers
 {
@@ -16,6 +18,7 @@ namespace BlondsCooking.Helpers
                 StorageFile file = await ApplicationData.Current.LocalFolder.CreateFileAsync(item.Name, CreationCollisionOption.ReplaceExisting);
                 await item.DownloadToFileAsync(file);
             }
+            Messenger.Default.Send(new DownloadingStatusMessage("finished"));
         }
 
     }

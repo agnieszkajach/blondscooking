@@ -21,13 +21,15 @@
             </PivotItem.Header>
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"></RowDefinition>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="6*"/>
                 </Grid.RowDefinitions>
-                <TextBlock VerticalAlignment="center" TextWrapping="Wrap" Grid.Row="1" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" FontSize="35" Text="{Binding SelectedRecipe.Title, Converter={StaticResource ConvertTextToUpper}}"/>
-                <Image Grid.Row="0" Source="../Assets/Recipe/photos.png" HorizontalAlignment="Left" />
-                <Image VerticalAlignment="Top" Grid.Row="2" Source="{Binding SelectedRecipe.UrlToImage}">
+                <ProgressBar Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="White" IsIndeterminate="true" Visibility="{Binding FinishedDownloading, Mode=TwoWay}" Width="200" Height="50"/>
+                <TextBlock VerticalAlignment="center" TextWrapping="Wrap" Grid.Row="2" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" FontSize="35" Text="{Binding SelectedRecipe.Title, Converter={StaticResource ConvertTextToUpper}}"/>
+                <Image Grid.Row="1" Source="../Assets/Recipe/photos.png" HorizontalAlignment="Left" />
+                <Image VerticalAlignment="Top" Grid.Row="3" Source="{Binding SelectedRecipe.UrlToImage}">
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
                             <core:InvokeCommandAction Command="{Binding FullScreenCommand}"></core:InvokeCommandAction>
@@ -42,10 +44,12 @@
             </PivotItem.Header>
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="0.3*"></RowDefinition>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="../Assets/Recipe/shopping.png" HorizontalAlignment="Left" />
+                <ProgressBar Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="White" IsIndeterminate="true" Visibility="{Binding FinishedDownloading, Mode=TwoWay}" Width="200" Height="50"/>
+                <Image Grid.Row="1" Source="../Assets/Recipe/shopping.png" HorizontalAlignment="Left" />
                 <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Margin="0, 15, 0, 0" Grid.Row="2" TextWrapping="WrapWholeWords" FontSize="25" Text="{Binding SelectedRecipe.Ingredients}" />
             </Grid>
         </PivotItem>
@@ -56,11 +60,13 @@
             <Grid>
                 
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="1">
+                <ProgressBar Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="White" IsIndeterminate="true" Visibility="{Binding FinishedDownloading, Mode=TwoWay}" Width="200" Height="50"/>
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -72,8 +78,8 @@
                     <Image Grid.Column="2" Source="../Assets/Recipe/time.png"/>
                     <TextBlock Grid.Column="3" HorizontalAlignment="Left" Text="{Binding SelectedRecipe.Time}" FontSize="25" VerticalAlignment="Center"  FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans"/>
                 </Grid>
-                <Image Source="../Assets/Recipe/properties.png" HorizontalAlignment="Left"/>
-                <Grid Grid.Row="2">
+                <Image Grid.Row="1" Source="../Assets/Recipe/properties.png" HorizontalAlignment="Left"/>
+                <Grid Grid.Row="3">
                     <ListView>
                         <TextBlock FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Margin="0, 15, 0, 0" Grid.Row="2" TextWrapping="WrapWholeWords" FontSize="25"  Text="{Binding SelectedRecipe.Text}"/>
                     </ListView>

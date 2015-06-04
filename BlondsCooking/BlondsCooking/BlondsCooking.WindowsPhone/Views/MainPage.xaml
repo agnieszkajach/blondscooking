@@ -19,6 +19,7 @@
             </PivotItem.Header>  
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"></RowDefinition>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -27,24 +28,25 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Command="{Binding OpenMuffinWindowCoomand}" Grid.Row="0" Grid.Column="0" BorderThickness="0">
+                <Button Command="{Binding OpenMuffinWindowCoomand}" Grid.Row="1" Grid.Column="0" BorderThickness="0">
                     <Image Source="../Assets/Categories/muffins.png"></Image>
                 </Button>
-                <Button Command="{Binding OpenCakeWindowCoomand}" Grid.Row="1" Grid.Column="0" BorderThickness="0">
+                <Button Command="{Binding OpenCakeWindowCoomand}" Grid.Row="2" Grid.Column="0" BorderThickness="0">
                     <Image Source="../Assets/Categories/cakes.png"></Image>
                 </Button>
-                <Button Command="{Binding OpenPancakeWindowCoomand}" Grid.Row="2" Grid.Column="0" BorderThickness="0">
+                <Button Command="{Binding OpenPancakeWindowCoomand}" Grid.Row="3" Grid.Column="0" BorderThickness="0">
                     <Image Source="../Assets/Categories/pancake.png"></Image>
                 </Button>
-                <Button Command="{Binding OpenCookieWindowCoomand}" Grid.Row="0" Grid.Column="1" BorderThickness="0">
+                <Button Command="{Binding OpenCookieWindowCoomand}" Grid.Row="1" Grid.Column="1" BorderThickness="0">
                     <Image Source="../Assets/Categories/cookies.png"></Image>
                 </Button>
-                <Button Command="{Binding OpenDinnerWindowCoomand}" Grid.Row="1" Grid.Column="1" BorderThickness="0">
+                <Button Command="{Binding OpenDinnerWindowCoomand}" Grid.Row="2" Grid.Column="1" BorderThickness="0">
                     <Image Source="../Assets/Categories/maindishes.png"></Image>
                 </Button>
-                <Button Command="{Binding OpenShakeWindowCoomand}" Grid.Row="2" Grid.Column="1" BorderThickness="0">
+                <Button Command="{Binding OpenShakeWindowCoomand}" Grid.Row="3" Grid.Column="1" BorderThickness="0">
                     <Image Source="../Assets/Categories/shake.png"></Image>
                 </Button>
+                <ProgressBar Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="White" IsIndeterminate="true" Visibility="{Binding FinishedDownloading, Mode=TwoWay}" Width="200" Height="50"/>
             </Grid>
        </PivotItem>
         <PivotItem>

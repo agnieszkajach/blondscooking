@@ -9,11 +9,13 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using System.Collections.ObjectModel;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using BlondsCooking.Synchronization;
 
 namespace BlondsCooking.ViewModel
 {
@@ -22,6 +24,7 @@ namespace BlondsCooking.ViewModel
         private INavigationService navigationService;
         private String selectedRecipe;
         private Recipe _selectedRecipe;
+        private string _finishedDownloading;
 
         public Recipe SelectedRecipe
         {
@@ -33,11 +36,36 @@ namespace BlondsCooking.ViewModel
             }
         }
 
-        public SelectedRecipeViewModel(INavigationService navigationService)
+        public string FinishedDownloading
         {
-            this.navigationService = navigationService; 
+            get { return _finishedDownloading; }
+            set
+            {
+                _finishedDownloading = value;
+            }
         }
 
+        public SelectedRecipeViewModel(INavigationService navigationService)
+        {
+            this.navigationService = navigationService;
+            Messenger.Default.Register<DownloadingStatusMessage>(this, HandleFinishedDownloading);
+            this.FinishedDownloading = App.FinishedDownloading;
+        }
+
+        private void HandleFinishedDownloading(DownloadingStatusMessage message)
+        {
+            if (message.Status == "finished")
+            {
+                Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    FinishedDownloading = "Collapsed";
+                    RaisePropertyChanged(() => FinishedDownloading);
+                }
+            );
+            }
+            
+        }
+        
 
         public RelayCommand<String> BackCommand
         {

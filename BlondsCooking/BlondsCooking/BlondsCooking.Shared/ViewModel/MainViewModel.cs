@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Windows.ApplicationModel.Background;
+using Windows.UI.Core;
 using Windows.UI.WebUI;
 using BlondsCooking.Common;
+using BlondsCooking.Synchronization;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -25,24 +27,38 @@ namespace BlondsCooking.ViewModel
     public class MainViewModel : ViewModelBase, INavigable
     {
         private INavigationService navigationService;
+        private string _finishedDownloading;
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel(INavigationService navigationService)
         {
             this.navigationService = navigationService;
+            Messenger.Default.Register<DownloadingStatusMessage>(this, HandleFinishedDownloading);
+            this.FinishedDownloading = App.FinishedDownloading;
+        }
 
-            //if (App.BackgroundAccessStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
-            //    App.BackgroundAccessStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity)
-            //{
-            //    BackgroundTaskBuilder backgroundTaskBuilder = new BackgroundTaskBuilder
-            //    {
-            //        TaskEntryPoint = "BlondsCooking.Synchronization.UpdateCheckingInBackground"
-            //    };
-            //    backgroundTaskBuilder.SetTrigger(new TimeTrigger(60, false));
-            //    backgroundTaskBuilder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
-            //    backgroundTaskBuilder.Register();
-            //} 
+        private void HandleFinishedDownloading(DownloadingStatusMessage message)
+        {
+            if (message.Status == "finished")
+            {
+                Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    FinishedDownloading = "Collapsed";
+                    RaisePropertyChanged(() => FinishedDownloading);
+                }
+            );
+            }
+            
+        }
+
+        public string FinishedDownloading
+        {
+            get { return _finishedDownloading;}
+            set
+            {
+                _finishedDownloading = value;
+            }
         }
 
         public RelayCommand OpenMuffinWindowCoomand

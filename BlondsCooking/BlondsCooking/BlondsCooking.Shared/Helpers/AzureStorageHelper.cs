@@ -10,7 +10,6 @@ namespace BlondsCooking.Helpers
 {
     public class AzureStorageHelper
     {
-
         public async static Task DownloadAllImagesFromAzure()
         {
             BlobContinuationToken token = null;

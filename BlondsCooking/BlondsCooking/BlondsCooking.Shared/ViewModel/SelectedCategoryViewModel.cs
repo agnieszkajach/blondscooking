@@ -7,10 +7,12 @@ using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
+using Windows.UI.Core;
 using Windows.UI.Popups;
 using BlondsCooking.Common;
 using BlondsCooking.Helpers;
 using BlondsCooking.Model;
+using BlondsCooking.Synchronization;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -26,6 +28,7 @@ namespace BlondsCooking.ViewModel
         private ObservableCollection<Recipe> _recipesInSelectedCategory;
         private String _urlToImageOfCategory;
         private readonly Services.IDialogService dialogService;
+        private string _finishedDownloading;
 
         public Recipe SelectedRecipe
         {
@@ -68,14 +71,37 @@ namespace BlondsCooking.ViewModel
             }
         }
 
+        public string FinishedDownloading
+        {
+            get { return _finishedDownloading; }
+            set
+            {
+                _finishedDownloading = value;
+            }
+        }
+
         public SelectedCategoryViewModel(INavigationService navigationService, Services.IDialogService dialogService)
         {
             this.navigationService = navigationService;
             this.dialogService = dialogService;
-
+            Messenger.Default.Register<DownloadingStatusMessage>(this, HandleFinishedDownloading);
+            this.FinishedDownloading = App.FinishedDownloading;
         }
 
-         public RelayCommand BackCommand
+        private void HandleFinishedDownloading(DownloadingStatusMessage message)
+        {
+            if (message.Status == "finished")
+            {
+                Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    FinishedDownloading = "Collapsed";
+                    RaisePropertyChanged(() => FinishedDownloading);
+                }
+            );
+            }
+        }
+
+        public RelayCommand BackCommand
          {
              get { return new RelayCommand(() => navigationService.NavigateTo("Main", " ")); }
          }
@@ -129,5 +155,6 @@ namespace BlondsCooking.ViewModel
         {
            
         }
+
     }
 }

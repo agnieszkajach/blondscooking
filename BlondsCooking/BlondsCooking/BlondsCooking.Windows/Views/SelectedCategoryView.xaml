@@ -48,7 +48,7 @@
                         VerticalAlignment="Top" Height="150" Width="200">
             <Image Source="../Assets/Layout/back.png" />
         </Button>
-                            
-        
+
+        <ProgressBar Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="White" IsIndeterminate="true" Visibility="{Binding FinishedDownloading, Mode=TwoWay}" Width="800" Height="50"/>
     </Grid>
 </common:BasePage>

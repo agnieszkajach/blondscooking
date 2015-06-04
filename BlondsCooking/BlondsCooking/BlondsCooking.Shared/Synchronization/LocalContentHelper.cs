@@ -11,6 +11,7 @@ using Windows.Storage.Search;
 using Windows.UI.Xaml;
 using BlondsCooking.Helpers;
 using BlondsCooking.Services;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BlondsCooking.Synchronization
 {

@@ -27,6 +27,7 @@ using Windows.UI.Xaml.Media.Animation;
 using BlondsCooking.Common;
 using GalaSoft.MvvmLight.Views;
 using BlondsCooking.Services;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BlondsCooking
 {
@@ -39,6 +40,7 @@ namespace BlondsCooking
         public static BackgroundAccessStatus BackgroundAccessStatus;
         public static string FileName = "recipes.xml";
         public static bool InternetNeeded = false;
+        public static string FinishedDownloading = "visible";
 
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
@@ -94,6 +96,7 @@ namespace BlondsCooking
             }
             else
             {
+                FinishedDownloading = "collapsed";
                 LocalContentHelper localContentHelper = new LocalContentHelper();
                 await ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => localContentHelper.RunLocalContent()), WorkItemPriority.High);
                 await ThreadPool.RunAsync(new WorkItemHandler((IAsyncAction) => updateCheckingInBackground.Run()), WorkItemPriority.Normal);

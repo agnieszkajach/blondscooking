@@ -31,6 +31,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDialogService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Synchronization\AzureUpdateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Synchronization\BackgroundDataDownloader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Synchronization\DownloadingStatusMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Synchronization\UpdateCheckingInBackground.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Synchronization\LocalContentHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\FullScreenViewModel.cs" />
