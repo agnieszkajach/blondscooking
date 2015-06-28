@@ -34,14 +34,14 @@
         <Hub Grid.Column="1" Grid.RowSpan="2">
             <HubSection>
                 <DataTemplate>
-                    <GridView SelectedItem="{Binding SelectedRecipe}" ItemsSource="{Binding RecipesInSelectedCategory}" Margin="10">
+                    <GridView SelectedItem="{Binding SelectedRecipe}" ItemsSource="{Binding RecipesInSelectedCategory, Mode=TwoWay}" Margin="10">
                         <GridView.ItemTemplate>
                             <DataTemplate >
                                 <Grid>
                                     <Button Height="210" Width="210" CommandParameter="{Binding Title}" Command="{Binding ElementName=CategoryPage, Path=DataContext.OpenRecipeCommand}">
-                                        <Image Source="{Binding UrlToImage}"/>
+                                        <Image Source="{Binding UrlToImage, Mode=TwoWay}"/>
                                     </Button>
-                                    <TextBlock Text="{Binding Title}" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" FontSize="17" Foreground="White" HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0, 240, 0, 0"/>
+                                    <TextBlock Text="{Binding Title, Mode=TwoWay}" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" FontSize="17" Foreground="White" HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0, 240, 0, 0"/>
                                 </Grid>
                             </DataTemplate>
                         </GridView.ItemTemplate>

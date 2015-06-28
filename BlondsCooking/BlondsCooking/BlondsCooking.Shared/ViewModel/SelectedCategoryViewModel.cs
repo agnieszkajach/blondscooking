@@ -95,7 +95,10 @@ namespace BlondsCooking.ViewModel
                 Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
                     FinishedDownloading = "Collapsed";
+                    App.FinishedDownloading = FinishedDownloading;
                     RaisePropertyChanged(() => FinishedDownloading);
+                    RecipesInSelectedCategory = new ObservableCollection<Recipe>(RecipesInSelectedCategory);
+                    RaisePropertyChanged(() => RecipesInSelectedCategory);
                 }
             );
             }
