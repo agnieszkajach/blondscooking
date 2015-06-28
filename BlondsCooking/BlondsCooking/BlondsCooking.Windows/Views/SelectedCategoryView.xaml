@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.RowDefinitions>
@@ -31,19 +31,25 @@
             <Image Grid.Row="0" VerticalAlignment="Bottom" Source="{Binding UrlToImageOfCategory}"></Image>
             <TextBlock Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30"  FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" Text="{Binding SelectedCategory, Converter={StaticResource ConvertTextToUpper}}" />
         </Grid>
-
-        <GridView Grid.Column="1" Grid.Row="1" SelectedItem="{Binding SelectedRecipe}" ItemsSource="{Binding RecipesInSelectedCategory}" Margin="20">
-            <GridView.ItemTemplate>
-                <DataTemplate >
-                    <Grid>
-                        <Button Height="230" Width="230" CommandParameter="{Binding Title}" Command="{Binding ElementName=CategoryPage, Path=DataContext.OpenRecipeCommand}">
-                            <Image Source="{Binding UrlToImage}"/>
-                        </Button>
-                        <TextBlock Text="{Binding Title}" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" FontSize="22" Foreground="White" HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0, 260, 0, 0"/>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+        <Hub Grid.Column="1" Grid.RowSpan="2">
+            <HubSection>
+                <DataTemplate>
+                    <GridView SelectedItem="{Binding SelectedRecipe}" ItemsSource="{Binding RecipesInSelectedCategory}" Margin="10">
+                        <GridView.ItemTemplate>
+                            <DataTemplate >
+                                <Grid>
+                                    <Button Height="210" Width="210" CommandParameter="{Binding Title}" Command="{Binding ElementName=CategoryPage, Path=DataContext.OpenRecipeCommand}">
+                                        <Image Source="{Binding UrlToImage}"/>
+                                    </Button>
+                                    <TextBlock Text="{Binding Title}" FontFamily="../Assets/Fonts/Idealist.otf#Idealist Sans" FontSize="17" Foreground="White" HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0, 240, 0, 0"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </DataTemplate>                
+            </HubSection>
+        </Hub>
+       
         <Button Grid.Row="0" Grid.Column="0" Margin="9,-11,0,0" Command="{Binding BackCommand}" BorderThickness="0"
                         VerticalAlignment="Top" Height="150" Width="200">
             <Image Source="../Assets/Layout/back.png" />
